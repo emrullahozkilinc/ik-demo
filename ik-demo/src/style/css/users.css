@@ -1,0 +1,29 @@
+.employee-table{
+  margin: 30px;
+}
+
+.employee-table2{
+  align-items: center;
+  justify-items: center;
+}
+
+td, th{
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-wrapper {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 6px;
+  min-width: 1000px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.table-title {
+  background: #1f1f42;
+  color: #fff;
+  padding: 16px 30px;
+  margin: -20px -25px 10px;
+  border-radius: 6px 6px 0 0;
+}

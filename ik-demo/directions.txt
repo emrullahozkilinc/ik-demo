@@ -1,1 +1,4 @@
 shift, spending, dayoff modallarına action eklenecek.
+contact details kısmına gidecek veriler düzenlenecek (şimdilik Users componentinde tutuluyor)
+position enumu backend'den eklenecek
+pagination sayısı vs. düzeltilecek.

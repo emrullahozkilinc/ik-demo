@@ -1,22 +1,20 @@
-import {useState} from "react"
-import Users from "./components/Users"
+import './style/css/app.css'
+import NavBar from "./NavBar";
+import data from './users.json'
+import EmployeeList from "./EmployeeList";
 
 function App() {
 
-    const [workers, setWorkers] = useState([{
-        firstName: "",
-        lastname: "",
-        natId: "",
-        position: "",
-        dateOfStart: new Date(628021800000),
-        salary: 0,
-        department: "",
-        email: ""
-    }])
-
   return (
     <div className="App">
-        <Users workers={workers}/>
+        <NavBar/>
+
+        <EmployeeList allEmployees={data} employeeContacts={{
+            address:"Kartaltepe, Malazgirt Cd. No:2-4, 34295 Küçükçekmece/İstanbul",
+            city:"İstanbul",
+            country:"Turkey",
+            code:"34252",
+        }}/>
     </div>
   );
 }
