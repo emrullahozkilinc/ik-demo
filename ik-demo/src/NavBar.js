@@ -1,6 +1,9 @@
 import {Col, Row} from "reactstrap";
+import {useAuth} from "./components/auth/AuthContext";
 
 const NavBar = () => {
+    const {logout} = useAuth();
+
     return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand" href="src/NavBar#">Navbar</a>
@@ -12,26 +15,25 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                    <a className="nav-link" href="src/NavBar#">Home <span className="sr-only">(current)</span></a>
+                    <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="src/NavBar#">Features</a>
+                    <a className="nav-link" href="/employees">Employees</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="src/NavBar#">Pricing</a>
+                    <a className="nav-link" href="/dayoffs">Dayoffs</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="src/NavBar#">About</a>
+                    <a className="nav-link" href="/spendings">Spendings</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/shifts">Shifts</a>
                 </li>
             </ul>
             <form className="form-inline">
                 <Row>
-
-                    <Col><input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/></Col>
-                    <Col><button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button></Col>
-
+                    <Col><button className="btn btn-outline-info my-2 my-sm-0" onClick={logout}>Logout</button></Col>
                 </Row>
-
             </form>
         </div>
     </nav>

@@ -9,9 +9,9 @@ function DayoffModal(props) {
 
     return (
         <div>
-            <Button color="primary" outline onClick={toggle}>Add Dayoff</Button>
+            <Button color="primary" outline onClick={toggle}>{props.desc}</Button>
             <Modal isOpen={isOpen} toggle={toggle} centered={true}>
-            <ModalHeader>Add Leave</ModalHeader>
+            <ModalHeader>Add Dayoff</ModalHeader>
             <ModalBody>
                 <Form>
                     <Row>

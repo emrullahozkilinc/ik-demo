@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from "react";
 import data from './users.json'
 import {Col, Row, Table} from "reactstrap";
-import AddEmployeeModal from "./components/modals/AddEmployeeModal";
-import DayoffModal from "./components/modals/DayoffModal";
-import SpendingModal from "./components/modals/SpendingModal";
-import ShiftModal from "./components/modals/ShiftModal";
-import AddressModal from "./components/modals/AddressModal";
-import EditEmployeeModal from "./components/modals/EditEmployeeModal";
-import DeleteEmployeeModal from "./components/modals/DeleteEmployeeModal";
+import AddEmployeeModal from "./components/modals/employee/AddEmployeeModal";
+import DayoffModal from "./components/modals/dayoff/DayoffModal";
+import SpendingModal from "./components/modals/spending/SpendingModal";
+import ShiftModal from "./components/modals/shift/ShiftModal";
+import AddressModal from "./components/modals/address/AddressModal";
+import EditEmployeeModal from "./components/modals/employee/EditEmployeeModal";
+import DeleteEmployeeModal from "./components/modals/employee/DeleteEmployeeModal";
 import MyPagination from "./Pagination";
+import './style/css/tables.css'
 
 const EmployeeList = ({allEmployees, employeeContacts}) => {
     const [employees, setEmployees] = useState([]);
@@ -25,7 +26,7 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
     const totalPages = Math.ceil(employees.length/employeesPerPage);
 
     return (
-        <div className="employee-table">
+        <div className="general-table">
             <div className="table-wrapper">
                 <div className="table-title">
                     <Row>
@@ -66,22 +67,22 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
                     {currentEmployees.map((worker, i) => {
                         return (
                             <tr key={i}>
-                                <th scope="row">{i+1}</th>
-                                <td>{worker.firstName}</td>
+                                <th scope="row">{indexOfFirstEmployee+i+1}</th>
+                                <td>{worker.firstname}</td>
                                 <td>{worker.lastname}</td>
                                 <td>{worker.natId}</td>
                                 <td>{worker.position}</td>
                                 <td>{new Date(worker.dateOfStart).toLocaleDateString()}</td>
-                                <td>{worker.salary}</td>
+                                <td>{new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(worker.salary)}</td>
                                 <td>{worker.level}</td>
                                 <td>{worker.title}</td>
                                 <td>{new Date(worker.bornDate).toLocaleDateString()}</td>
                                 <td>{worker.department}</td>
                                 <td>{worker.email}</td>
-                                <td><DayoffModal/></td>
+                                <td><DayoffModal desc={"Add Dayoff"}/></td>
                                 <td><SpendingModal/></td>
                                 <td><ShiftModal/></td>
-                                <td><AddressModal usercontacts={employeeContacts}/></td>
+                                <td><AddressModal usercontacts={worker.userdetail}/></td>
                                 <td>
                                     <Row>
                                         <Col>

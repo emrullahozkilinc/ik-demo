@@ -1,0 +1,701 @@
+[{
+  "type": "n/a",
+  "natId": "1153294427",
+  "amount": 2279,
+  "receiptDate": 1598016676295,
+  "taxRate": 13,
+  "description": "Dilation of Coronary Artery, Four or More Arteries, Bifurcation, with Three Drug-eluting Intraluminal Devices, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "3657197087",
+  "amount": 4290,
+  "receiptDate": 1614959159526,
+  "taxRate": 15,
+  "description": "Plain Radiography of Left Vertebral Artery using Low Osmolar Contrast"
+}, {
+  "type": "n/a",
+  "natId": "0606642021",
+  "amount": 2534,
+  "receiptDate": 1597863075785,
+  "taxRate": 6,
+  "description": "Supplement Left Temporomandibular Joint with Autologous Tissue Substitute, Percutaneous Approach"
+}, {
+  "type": "Savings Institutions",
+  "natId": "9297356656",
+  "amount": 3796,
+  "receiptDate": 1611275934213,
+  "taxRate": 17,
+  "description": "Revision of Synthetic Substitute in Left Hip Joint, External Approach"
+}, {
+  "type": "n/a",
+  "natId": "0977803988",
+  "amount": 995,
+  "receiptDate": 1613461346812,
+  "taxRate": 2,
+  "description": "Removal of Synthetic Substitute from Thoracic Vertebral Joint, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "7416226627",
+  "amount": 1777,
+  "receiptDate": 1613176930769,
+  "taxRate": 6,
+  "description": "Supplement Right Glenoid Cavity with Synthetic Substitute, Percutaneous Endoscopic Approach"
+}, {
+  "type": "n/a",
+  "natId": "7243725597",
+  "amount": 583,
+  "receiptDate": 1616734787298,
+  "taxRate": 19,
+  "description": "Measurement of Venous Saturation, Peripheral, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "6480232763",
+  "amount": 4234,
+  "receiptDate": 1596090843419,
+  "taxRate": 14,
+  "description": "Computerized Tomography (CT Scan) of Bilateral Adrenal Glands using Low Osmolar Contrast"
+}, {
+  "type": "Real Estate Investment Trusts",
+  "natId": "9048588049",
+  "amount": 4922,
+  "receiptDate": 1612186662967,
+  "taxRate": 3,
+  "description": "Alteration of Left Upper Extremity with Synthetic Substitute, Percutaneous Approach"
+}, {
+  "type": "Oil Refining/Marketing",
+  "natId": "6573592816",
+  "amount": 3383,
+  "receiptDate": 1598771510502,
+  "taxRate": 16,
+  "description": "Inspection of Right Wrist Joint, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "8642071834",
+  "amount": 1960,
+  "receiptDate": 1616541208447,
+  "taxRate": 20,
+  "description": "Insertion of Infusion Device into Left Atrium, Percutaneous Approach"
+}, {
+  "type": "Medical/Nursing Services",
+  "natId": "1377449807",
+  "amount": 4761,
+  "receiptDate": 1606504692760,
+  "taxRate": 7,
+  "description": "Voice Prosthetic Assessment using Other Equipment"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "1463206305",
+  "amount": 595,
+  "receiptDate": 1602034796239,
+  "taxRate": 4,
+  "description": "Repair Left Main Bronchus, Percutaneous Approach"
+}, {
+  "type": "Medical/Dental Instruments",
+  "natId": "0721904084",
+  "amount": 4684,
+  "receiptDate": 1599251080041,
+  "taxRate": 1,
+  "description": "Revision of Drainage Device in Thoracolumbar Vertebral Joint, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Real Estate Investment Trusts",
+  "natId": "0410735353",
+  "amount": 4859,
+  "receiptDate": 1610062927501,
+  "taxRate": 14,
+  "description": "Replacement of Right Scapula with Synthetic Substitute, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Hotels/Resorts",
+  "natId": "8983770880",
+  "amount": 2290,
+  "receiptDate": 1609954718687,
+  "taxRate": 4,
+  "description": "Fluoroscopy of Pelvis"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "6913016670",
+  "amount": 406,
+  "receiptDate": 1605710073683,
+  "taxRate": 16,
+  "description": "Drainage of Left Upper Leg Tendon, Percutaneous Approach"
+}, {
+  "type": "Real Estate Investment Trusts",
+  "natId": "5220470965",
+  "amount": 1906,
+  "receiptDate": 1604438775882,
+  "taxRate": 20,
+  "description": "Removal of Drainage Device from Adrenal Gland, External Approach"
+}, {
+  "type": "Department/Specialty Retail Stores",
+  "natId": "1769198709",
+  "amount": 4154,
+  "receiptDate": 1594849945425,
+  "taxRate": 10,
+  "description": "Drainage of Bilateral Ureters, Via Natural or Artificial Opening Endoscopic"
+}, {
+  "type": "Motor Vehicles",
+  "natId": "4442576521",
+  "amount": 3898,
+  "receiptDate": 1607029351928,
+  "taxRate": 10,
+  "description": "Removal of Synthetic Substitute from Female Perineum, Open Approach"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "0433506628",
+  "amount": 3437,
+  "receiptDate": 1597303181542,
+  "taxRate": 11,
+  "description": "Removal of Spacer from Left Knee Joint, Percutaneous Endoscopic Approach"
+}, {
+  "type": "n/a",
+  "natId": "2528267932",
+  "amount": 2406,
+  "receiptDate": 1599230582541,
+  "taxRate": 11,
+  "description": "Drainage of Right Adrenal Gland, Percutaneous Approach"
+}, {
+  "type": "n/a",
+  "natId": "6423286515",
+  "amount": 1761,
+  "receiptDate": 1615898156887,
+  "taxRate": 12,
+  "description": "Drainage of Bilateral Vas Deferens, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "2995648052",
+  "amount": 3610,
+  "receiptDate": 1604791063284,
+  "taxRate": 3,
+  "description": "Transfer Right Knee Bursa and Ligament, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Restaurants",
+  "natId": "7289252985",
+  "amount": 1506,
+  "receiptDate": 1615215760748,
+  "taxRate": 4,
+  "description": "Repair Chest Wall, External Approach"
+}, {
+  "type": "Building Materials",
+  "natId": "8228644841",
+  "amount": 1912,
+  "receiptDate": 1598212620054,
+  "taxRate": 16,
+  "description": "Resection of Atrial Septum, Percutaneous Approach"
+}, {
+  "type": "Semiconductors",
+  "natId": "0936790458",
+  "amount": 2738,
+  "receiptDate": 1602997690219,
+  "taxRate": 18,
+  "description": "Reposition Right Internal Carotid Artery, Percutaneous Approach"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "9125636774",
+  "amount": 2308,
+  "receiptDate": 1601896639467,
+  "taxRate": 12,
+  "description": "Computerized Tomography (CT Scan) of Right Patella using High Osmolar Contrast"
+}, {
+  "type": "Semiconductors",
+  "natId": "4193311813",
+  "amount": 4419,
+  "receiptDate": 1608826030188,
+  "taxRate": 16,
+  "description": "Excision of Right Shoulder Region, Percutaneous Endoscopic Approach, Diagnostic"
+}, {
+  "type": "Major Banks",
+  "natId": "3244196004",
+  "amount": 3759,
+  "receiptDate": 1607150058624,
+  "taxRate": 17,
+  "description": "Dilation of Colic Vein, Open Approach"
+}, {
+  "type": "Medical Specialities",
+  "natId": "8310015453",
+  "amount": 2433,
+  "receiptDate": 1600487401155,
+  "taxRate": 7,
+  "description": "Reposition Oculomotor Nerve, Open Approach"
+}, {
+  "type": "Computer Communications Equipment",
+  "natId": "7126439547",
+  "amount": 1014,
+  "receiptDate": 1615502563862,
+  "taxRate": 4,
+  "description": "Supplement Right Humeral Head with Autologous Tissue Substitute, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Television Services",
+  "natId": "5505249116",
+  "amount": 377,
+  "receiptDate": 1597904360816,
+  "taxRate": 3,
+  "description": "Dilation of Left Common Carotid Artery, Bifurcation, with Three Intraluminal Devices, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Oil Refining/Marketing",
+  "natId": "8441514658",
+  "amount": 3630,
+  "receiptDate": 1617333982109,
+  "taxRate": 17,
+  "description": "Reposition Left Ankle Joint with External Fixation Device, Percutaneous Approach"
+}, {
+  "type": "Savings Institutions",
+  "natId": "9350791218",
+  "amount": 3024,
+  "receiptDate": 1603771453098,
+  "taxRate": 4,
+  "description": "Excision of Pituitary Gland, Percutaneous Approach, Diagnostic"
+}, {
+  "type": "Major Banks",
+  "natId": "8559613196",
+  "amount": 1932,
+  "receiptDate": 1607682231198,
+  "taxRate": 11,
+  "description": "Revision of Neurostimulator Lead in Right Innominate Vein, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Commercial Banks",
+  "natId": "7033987188",
+  "amount": 1905,
+  "receiptDate": 1598527561039,
+  "taxRate": 10,
+  "description": "Occlusion of Right Popliteal Artery with Intraluminal Device, Percutaneous Endoscopic Approach"
+}, {
+  "type": "n/a",
+  "natId": "7793489543",
+  "amount": 1981,
+  "receiptDate": 1609222082484,
+  "taxRate": 16,
+  "description": "Removal of Autologous Tissue Substitute from Right Eye, Via Natural or Artificial Opening"
+}, {
+  "type": "n/a",
+  "natId": "8480772905",
+  "amount": 234,
+  "receiptDate": 1608651037282,
+  "taxRate": 8,
+  "description": "Removal of Infusion Device from Head and Neck Subcutaneous Tissue and Fascia, Open Approach"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "2141593573",
+  "amount": 3193,
+  "receiptDate": 1594801460884,
+  "taxRate": 2,
+  "description": "Excision of Right Spermatic Cord, Percutaneous Approach"
+}, {
+  "type": "Automotive Aftermarket",
+  "natId": "8720521022",
+  "amount": 1812,
+  "receiptDate": 1606995259579,
+  "taxRate": 17,
+  "description": "Dilation of Left Radial Artery with Three Intraluminal Devices, Percutaneous Approach"
+}, {
+  "type": "Major Banks",
+  "natId": "5275263341",
+  "amount": 3150,
+  "receiptDate": 1602316785095,
+  "taxRate": 7,
+  "description": "Release Right Pelvic Bone, Percutaneous Approach"
+}, {
+  "type": "Investment Bankers/Brokers/Service",
+  "natId": "2638972800",
+  "amount": 369,
+  "receiptDate": 1610503550906,
+  "taxRate": 5,
+  "description": "Revision of Autologous Tissue Substitute in Left Hip Joint, Percutaneous Approach"
+}, {
+  "type": "Building Materials",
+  "natId": "0390809772",
+  "amount": 3353,
+  "receiptDate": 1606103152239,
+  "taxRate": 18,
+  "description": "Drainage of Cerebellum, Open Approach"
+}, {
+  "type": "Property-Casualty Insurers",
+  "natId": "2531696903",
+  "amount": 4141,
+  "receiptDate": 1613541082295,
+  "taxRate": 17,
+  "description": "Revision of Internal Fixation Device in Left Finger Phalanx, Open Approach"
+}, {
+  "type": "Real Estate Investment Trusts",
+  "natId": "2325776174",
+  "amount": 4552,
+  "receiptDate": 1594410183226,
+  "taxRate": 1,
+  "description": "Drainage of Left Ovary, External Approach"
+}, {
+  "type": "Oil & Gas Production",
+  "natId": "3617398367",
+  "amount": 2273,
+  "receiptDate": 1606457788592,
+  "taxRate": 17,
+  "description": "Bypass Left Common Iliac Artery to Bilateral Renal Artery with Synthetic Substitute, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "6757642093",
+  "amount": 3710,
+  "receiptDate": 1594573961039,
+  "taxRate": 20,
+  "description": "Restriction of Upper Esophagus, Open Approach"
+}, {
+  "type": "Hospital/Nursing Management",
+  "natId": "6801679333",
+  "amount": 4915,
+  "receiptDate": 1597720068234,
+  "taxRate": 16,
+  "description": "Division of Right Lower Arm Subcutaneous Tissue and Fascia, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "9288189971",
+  "amount": 4346,
+  "receiptDate": 1601629291682,
+  "taxRate": 9,
+  "description": "Extirpation of Matter from Left Lower Leg Muscle, Open Approach"
+}, {
+  "type": "Aerospace",
+  "natId": "1904552099",
+  "amount": 1412,
+  "receiptDate": 1614785792217,
+  "taxRate": 8,
+  "description": "Supplement Right Fallopian Tube with Synthetic Substitute, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "7970963277",
+  "amount": 2664,
+  "receiptDate": 1602300109339,
+  "taxRate": 9,
+  "description": "Replacement of Left Tarsal with Nonautologous Tissue Substitute, Open Approach"
+}, {
+  "type": "Marine Transportation",
+  "natId": "3982923158",
+  "amount": 1267,
+  "receiptDate": 1614234773223,
+  "taxRate": 6,
+  "description": "Transfer Left Hand Muscle, Percutaneous Endoscopic Approach"
+}, {
+  "type": "n/a",
+  "natId": "8709538534",
+  "amount": 1498,
+  "receiptDate": 1610818014198,
+  "taxRate": 9,
+  "description": "Introduction of Autologous Pancreatic Islet Cells into Peripheral Vein, Open Approach"
+}, {
+  "type": "Major Banks",
+  "natId": "1156718929",
+  "amount": 1284,
+  "receiptDate": 1612177195254,
+  "taxRate": 20,
+  "description": "Drainage of Intracranial Vein with Drainage Device, Open Approach"
+}, {
+  "type": "Medical/Dental Instruments",
+  "natId": "4092033737",
+  "amount": 1618,
+  "receiptDate": 1600068903864,
+  "taxRate": 18,
+  "description": "Release Larynx, Percutaneous Approach"
+}, {
+  "type": "Farming/Seeds/Milling",
+  "natId": "1286983711",
+  "amount": 2203,
+  "receiptDate": 1603327402302,
+  "taxRate": 4,
+  "description": "Drainage of Right External Auditory Canal with Drainage Device, Percutaneous Endoscopic Approach"
+}, {
+  "type": "n/a",
+  "natId": "3744969975",
+  "amount": 4396,
+  "receiptDate": 1603178909511,
+  "taxRate": 20,
+  "description": "Release Left Metatarsal-Tarsal Joint, Percutaneous Approach"
+}, {
+  "type": "Savings Institutions",
+  "natId": "1129829766",
+  "amount": 1680,
+  "receiptDate": 1601693544062,
+  "taxRate": 6,
+  "description": "Insertion of Infusion Device into Right Colic Artery, Percutaneous Endoscopic Approach"
+}, {
+  "type": "EDP Services",
+  "natId": "9335552917",
+  "amount": 681,
+  "receiptDate": 1599286033692,
+  "taxRate": 11,
+  "description": "Repair Left 5th Toe, Open Approach"
+}, {
+  "type": "Electric Utilities: Central",
+  "natId": "8525372269",
+  "amount": 4922,
+  "receiptDate": 1615020643989,
+  "taxRate": 20,
+  "description": "Release Left Diaphragm, Percutaneous Approach"
+}, {
+  "type": "EDP Services",
+  "natId": "5613837856",
+  "amount": 2515,
+  "receiptDate": 1612622816687,
+  "taxRate": 20,
+  "description": "Bypass Esophageal Vein to Lower Vein with Autologous Arterial Tissue, Open Approach"
+}, {
+  "type": "Computer Manufacturing",
+  "natId": "5009239922",
+  "amount": 3705,
+  "receiptDate": 1604036609295,
+  "taxRate": 9,
+  "description": "Insertion of Radioactive Element into Left Lower Arm, Open Approach"
+}, {
+  "type": "Package Goods/Cosmetics",
+  "natId": "1362054372",
+  "amount": 4714,
+  "receiptDate": 1595704374731,
+  "taxRate": 16,
+  "description": "Replacement of Right Shoulder Joint with Synthetic Substitute, Open Approach"
+}, {
+  "type": "Real Estate",
+  "natId": "9952979142",
+  "amount": 4360,
+  "receiptDate": 1606473993654,
+  "taxRate": 7,
+  "description": "Restriction of Stomach, Pylorus, Via Natural or Artificial Opening"
+}, {
+  "type": "Semiconductors",
+  "natId": "2609963033",
+  "amount": 428,
+  "receiptDate": 1606895196015,
+  "taxRate": 17,
+  "description": "Occlusion of Pulmonary Valve with Extraluminal Device, Percutaneous Approach"
+}, {
+  "type": "n/a",
+  "natId": "1464144230",
+  "amount": 4758,
+  "receiptDate": 1609332733057,
+  "taxRate": 11,
+  "description": "Replacement of Right Upper Femur with Nonautologous Tissue Substitute, Open Approach"
+}, {
+  "type": "Military/Government/Technical",
+  "natId": "5414287813",
+  "amount": 3910,
+  "receiptDate": 1596256919710,
+  "taxRate": 2,
+  "description": "Muscle Performance Assessment of Neurological System - Head and Neck using Orthosis"
+}, {
+  "type": "Real Estate Investment Trusts",
+  "natId": "9413750009",
+  "amount": 151,
+  "receiptDate": 1599393125467,
+  "taxRate": 18,
+  "description": "Computerized Tomography (CT Scan) of Bilateral Lower Extremity Arteries using Intravascular Optical Coherence"
+}, {
+  "type": "Major Chemicals",
+  "natId": "9244449404",
+  "amount": 3793,
+  "receiptDate": 1602153816259,
+  "taxRate": 20,
+  "description": "Bypass Right Ureter to Cutaneous with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach"
+}, {
+  "type": "RETAIL: Building Materials",
+  "natId": "9358107847",
+  "amount": 848,
+  "receiptDate": 1617040763809,
+  "taxRate": 1,
+  "description": "Destruction of Left Ankle Joint, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Coal Mining",
+  "natId": "2613835885",
+  "amount": 4250,
+  "receiptDate": 1595385197647,
+  "taxRate": 20,
+  "description": "Revision of Internal Fixation Device in Right Hip Joint, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "2729969756",
+  "amount": 2024,
+  "receiptDate": 1602030529073,
+  "taxRate": 15,
+  "description": "Replacement of Left Sclera with Nonautologous Tissue Substitute, External Approach"
+}, {
+  "type": "n/a",
+  "natId": "9119785399",
+  "amount": 586,
+  "receiptDate": 1596997107280,
+  "taxRate": 1,
+  "description": "Supplement Right Metacarpal with Synthetic Substitute, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Plastic Products",
+  "natId": "9633506611",
+  "amount": 4840,
+  "receiptDate": 1608432403603,
+  "taxRate": 19,
+  "description": "Occlusion of Right Greater Saphenous Vein, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Real Estate Investment Trusts",
+  "natId": "1125338873",
+  "amount": 4858,
+  "receiptDate": 1604524745492,
+  "taxRate": 17,
+  "description": "Release Right Upper Lung Lobe, Via Natural or Artificial Opening Endoscopic"
+}, {
+  "type": "Real Estate",
+  "natId": "7905735583",
+  "amount": 2021,
+  "receiptDate": 1617114890601,
+  "taxRate": 6,
+  "description": "Removal of Pressure Dressing on Left Lower Extremity"
+}, {
+  "type": "n/a",
+  "natId": "8746084088",
+  "amount": 2348,
+  "receiptDate": 1610754907747,
+  "taxRate": 18,
+  "description": "Excision of Mesenteric Lymphatic, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "1722349840",
+  "amount": 343,
+  "receiptDate": 1598945251653,
+  "taxRate": 5,
+  "description": "Removal of Radioactive Element from Hepatobiliary Duct, Percutaneous Endoscopic Approach"
+}, {
+  "type": "n/a",
+  "natId": "4574997141",
+  "amount": 4815,
+  "receiptDate": 1616436234488,
+  "taxRate": 7,
+  "description": "Dilation of Left Brachial Artery with Intraluminal Device, Percutaneous Approach"
+}, {
+  "type": "EDP Services",
+  "natId": "3923021763",
+  "amount": 4155,
+  "receiptDate": 1610422751692,
+  "taxRate": 10,
+  "description": "Drainage of Bladder, Via Natural or Artificial Opening"
+}, {
+  "type": "Electric Utilities: Central",
+  "natId": "4956462719",
+  "amount": 4920,
+  "receiptDate": 1604447531770,
+  "taxRate": 8,
+  "description": "Drainage of Upper Lip, Open Approach, Diagnostic"
+}, {
+  "type": "Medical Specialities",
+  "natId": "5331649718",
+  "amount": 4652,
+  "receiptDate": 1612534172539,
+  "taxRate": 19,
+  "description": "Extraction of Lower Tooth, All, External Approach"
+}, {
+  "type": "EDP Services",
+  "natId": "2191687628",
+  "amount": 3049,
+  "receiptDate": 1600612966836,
+  "taxRate": 8,
+  "description": "Replacement of Left Foot Skin with Nonautologous Tissue Substitute, Partial Thickness, External Approach"
+}, {
+  "type": "n/a",
+  "natId": "7377513861",
+  "amount": 3350,
+  "receiptDate": 1597187900592,
+  "taxRate": 4,
+  "description": "Drainage of Right Foot Bursa and Ligament, Percutaneous Approach"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "8191312530",
+  "amount": 3956,
+  "receiptDate": 1597225478506,
+  "taxRate": 14,
+  "description": "Extirpation of Matter from Right Foot Tendon, Open Approach"
+}, {
+  "type": "Integrated oil Companies",
+  "natId": "2399467000",
+  "amount": 4723,
+  "receiptDate": 1608461297712,
+  "taxRate": 14,
+  "description": "Reposition Left Pelvic Bone, Percutaneous Approach"
+}, {
+  "type": "Building Materials",
+  "natId": "8342929558",
+  "amount": 800,
+  "receiptDate": 1596288571850,
+  "taxRate": 11,
+  "description": "Alteration of Right Elbow Region with Autologous Tissue Substitute, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "5639352035",
+  "amount": 4339,
+  "receiptDate": 1614695234707,
+  "taxRate": 10,
+  "description": "Beam Radiation of Ovary using Photons >10 MeV"
+}, {
+  "type": "EDP Services",
+  "natId": "7907992230",
+  "amount": 1772,
+  "receiptDate": 1604354819083,
+  "taxRate": 9,
+  "description": "Supplement Left Large Intestine with Autologous Tissue Substitute, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Auto Parts:O.E.M.",
+  "natId": "4157981189",
+  "amount": 4292,
+  "receiptDate": 1614591576533,
+  "taxRate": 5,
+  "description": "Change Drainage Device in Male Perineum, External Approach"
+}, {
+  "type": "Savings Institutions",
+  "natId": "4851575939",
+  "amount": 1209,
+  "receiptDate": 1605432449489,
+  "taxRate": 9,
+  "description": "Insertion of Limb Lengthening External Fixation Device into Left Fibula, Open Approach"
+}, {
+  "type": "n/a",
+  "natId": "0724698302",
+  "amount": 2933,
+  "receiptDate": 1609082257521,
+  "taxRate": 7,
+  "description": "Supplement Left Brachial Artery with Nonautologous Tissue Substitute, Percutaneous Approach"
+}, {
+  "type": "Ordnance And Accessories",
+  "natId": "4511054304",
+  "amount": 945,
+  "receiptDate": 1597600932259,
+  "taxRate": 19,
+  "description": "Insertion of Tissue Expander into Back Subcutaneous Tissue and Fascia, Percutaneous Approach"
+}, {
+  "type": "Business Services",
+  "natId": "4170540212",
+  "amount": 2504,
+  "receiptDate": 1606153003482,
+  "taxRate": 9,
+  "description": "Repair Paraganglion Extremity, Open Approach"
+}, {
+  "type": "Catalog/Specialty Distribution",
+  "natId": "1427273987",
+  "amount": 3526,
+  "receiptDate": 1597154281427,
+  "taxRate": 16,
+  "description": "Destruction of Right Parotid Duct, Percutaneous Approach"
+}, {
+  "type": "Major Pharmaceuticals",
+  "natId": "4223694359",
+  "amount": 4587,
+  "receiptDate": 1600292481479,
+  "taxRate": 13,
+  "description": "Excision of Head, Percutaneous Approach, Diagnostic"
+}, {
+  "type": "Investment Managers",
+  "natId": "9513326845",
+  "amount": 986,
+  "receiptDate": 1611094264592,
+  "taxRate": 20,
+  "description": "Bypass Right Fallopian Tube to Left Fallopian Tube with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach"
+}, {
+  "type": "Medical/Dental Instruments",
+  "natId": "9214916748",
+  "amount": 378,
+  "receiptDate": 1598907722142,
+  "taxRate": 19,
+  "description": "Excision of Perineum Tendon, Percutaneous Approach"
+}, {
+  "type": "Computer peripheral equipment",
+  "natId": "7435111503",
+  "amount": 2857,
+  "receiptDate": 1612334582656,
+  "taxRate": 10,
+  "description": "Occlusion of Bilateral Spermatic Cords with Intraluminal Device, Percutaneous Endoscopic Approach"
+}]

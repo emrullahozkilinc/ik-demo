@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
-import '../../style/css/add-employee.css'
+import '../../../style/css/add-employee.css'
 
 function AddEmployeeModal(props) {
 

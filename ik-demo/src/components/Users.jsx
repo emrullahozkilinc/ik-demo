@@ -1,14 +1,14 @@
 import React from 'react';
 import {Col, Row, Table} from "reactstrap";
-import DayoffModal from './modals/DayoffModal'
-import SpendingModal from './modals/SpendingModal'
-import ShiftModal from './modals/ShiftModal'
-import AddressModal from './modals/AddressModal'
-import AddEmployeeModal from "./modals/AddEmployeeModal";
-import EditEmployeeModal from "./modals/EditEmployeeModal";
-import DeleteEmployeeModal from "./modals/DeleteEmployeeModal";
+import DayoffModal from './modals/dayoff/DayoffModal'
+import SpendingModal from './modals/spending/SpendingModal'
+import ShiftModal from './modals/shift/ShiftModal'
+import AddressModal from './modals/address/AddressModal'
+import AddEmployeeModal from "./modals/employee/AddEmployeeModal";
+import EditEmployeeModal from "./modals/employee/EditEmployeeModal";
+import DeleteEmployeeModal from "./modals/employee/DeleteEmployeeModal";
 import MyPagination from "../Pagination";
-import '../style/css/users.css'
+import '../style/css/tables.css'
 
 class Users extends React.Component {
 
