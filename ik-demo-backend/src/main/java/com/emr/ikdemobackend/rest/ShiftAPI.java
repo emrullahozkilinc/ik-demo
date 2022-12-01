@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/shift")
+@RequestMapping("/shifts")
 public class ShiftAPI {
 
     @GetMapping
