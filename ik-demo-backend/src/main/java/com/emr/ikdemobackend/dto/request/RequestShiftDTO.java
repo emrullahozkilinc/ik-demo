@@ -1,13 +1,15 @@
-package com.emr.ikdemobackend.dto.response;
+package com.emr.ikdemobackend.dto.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Getter
-@AllArgsConstructor
-public class ShiftDTO {
+@ToString
+@RequiredArgsConstructor
+public class RequestShiftDTO {
     private final int employeeNationalId;
     private final LocalDateTime date;
     private final int hours;

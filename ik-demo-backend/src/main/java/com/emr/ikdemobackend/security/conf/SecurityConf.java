@@ -21,11 +21,17 @@ public class SecurityConf {
     private final UserDetailsService detailsService;
     private final PasswordEncoder encoder;
 
+    /*
+        authorize ile verdiğimiz kurallar dışındaki tüm istekleri şifre istemeden kabul ediyor
+     */
     @Bean
     SecurityFilterChain web(HttpSecurity http, AuthenticationManager manager) throws Exception{
         http.addFilter(new AuthFilter(manager));
         http.addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class);
         http.csrf().disable();
+
+        http.authorizeHttpRequests().requestMatchers("/api/v1/auth/**").hasAuthority("ROLE_ADMIN");
+        http.authorizeHttpRequests().requestMatchers("/api/v1/app/**").hasAuthority("ROLE_HR");
         http.authorizeHttpRequests().anyRequest().authenticated();
         return http.build();
     }

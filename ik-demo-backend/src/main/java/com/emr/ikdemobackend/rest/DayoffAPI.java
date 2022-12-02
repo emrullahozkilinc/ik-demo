@@ -1,6 +1,6 @@
 package com.emr.ikdemobackend.rest;
 
-import com.emr.ikdemobackend.dto.request.dayoff.CreateDayoffDTO;
+import com.emr.ikdemobackend.dto.request.RequestDayoffDTO;
 import com.emr.ikdemobackend.dto.response.DayoffDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/dayoffs")
+@RequestMapping("/api/v1/app/dayoffs")
 public class DayoffAPI {
 
 
@@ -20,14 +20,14 @@ public class DayoffAPI {
     }
 
     @PostMapping
-    public ResponseEntity<DayoffDTO> addDayoff(@Valid @RequestBody CreateDayoffDTO dayoff){
-        return ResponseEntity.ok(new DayoffDTO());
+    public ResponseEntity<DayoffDTO> addDayoff(@Valid @RequestBody RequestDayoffDTO dayoff){
+        return ResponseEntity.ok(null);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<DayoffDTO> updateDayoff(@PathVariable Long id,
-                                                      @Valid @RequestBody CreateDayoffDTO dayoff){
-        return ResponseEntity.ok(new DayoffDTO());
+                                                      @Valid @RequestBody RequestDayoffDTO dayoff){
+        return ResponseEntity.ok(null);
     }
 
     @DeleteMapping("/{id}")

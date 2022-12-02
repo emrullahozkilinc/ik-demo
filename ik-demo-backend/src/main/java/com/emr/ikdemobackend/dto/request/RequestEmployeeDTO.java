@@ -1,15 +1,17 @@
-package com.emr.ikdemobackend.dto.response;
+package com.emr.ikdemobackend.dto.request;
 
 import com.emr.ikdemobackend.entity.enums.Levels;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Getter
+@ToString
 @RequiredArgsConstructor
-public class EmployeeDTO {
+public class RequestEmployeeDTO {
     private final String firstName;
     private final String lastName;
     private final int nationalId;

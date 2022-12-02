@@ -1,0 +1,62 @@
+package com.emr.ikdemobackend.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
+
+@Getter
+@Setter
+@Entity
+@ToString
+@NoArgsConstructor
+public class EmployeeAddress {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
+
+    private String address;
+
+    private String city;
+
+    private String country;
+
+    private int postalCode;
+
+    @CreationTimestamp
+    private LocalDateTime created_at;
+
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
+
+    public EmployeeAddress(String address, String city, String country, int postalCode) {
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.postalCode = postalCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        EmployeeAddress that = (EmployeeAddress) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+}
