@@ -37,7 +37,7 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
         Algorithm algorithm = Algorithm.HMAC256("BU-SIFREYI-KIMSE-COZEMEZ!".getBytes());
         String token = JWT.create()
                 .withSubject(user.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 300000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + (60 * 60 * 1000 * 24)))
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);

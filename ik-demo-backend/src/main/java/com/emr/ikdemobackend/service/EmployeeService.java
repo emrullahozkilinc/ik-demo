@@ -6,8 +6,8 @@ import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.exception.EmployeeNotFoundException;
 import com.emr.ikdemobackend.mapper.EmployeeMapper;
 import com.emr.ikdemobackend.repository.EmployeeRepository;
-import com.emr.ikdemobackend.repository.EmployeeRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +15,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class EmployeeService {
 
 
-    private final EmployeeMapper mapper;
-    private final EmployeeRepository repository;
+    private EmployeeMapper mapper;
+    private EmployeeRepository repository;
 
     public List<EmployeeDTO> getAll(){
         return repository.findAll()

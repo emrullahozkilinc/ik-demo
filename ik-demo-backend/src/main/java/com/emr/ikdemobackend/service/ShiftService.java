@@ -6,7 +6,7 @@ import com.emr.ikdemobackend.entity.Shift;
 import com.emr.ikdemobackend.exception.ShiftNotFoundException;
 import com.emr.ikdemobackend.mapper.ShiftMapper;
 import com.emr.ikdemobackend.repository.ShiftRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +14,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ShiftService {
     
-    private final ShiftMapper mapper;
-    private final ShiftRepository repository;
+    private ShiftMapper mapper;
+    private ShiftRepository repository;
 
     public List<ShiftDTO> getAll(){
         return repository.findAll()

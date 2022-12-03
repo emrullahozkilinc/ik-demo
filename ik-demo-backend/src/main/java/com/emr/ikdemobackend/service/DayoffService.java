@@ -6,6 +6,8 @@ import com.emr.ikdemobackend.entity.Dayoff;
 import com.emr.ikdemobackend.exception.DayoffNotFoundException;
 import com.emr.ikdemobackend.mapper.DayoffMapper;
 import com.emr.ikdemobackend.repository.DayoffRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class DayoffService {
 
-    private final DayoffMapper mapper;
-    private final DayoffRepository repository;
+    private DayoffMapper mapper;
+    private DayoffRepository repository;
 
     public List<DayoffDTO> getAll(){
         return repository.findAll()

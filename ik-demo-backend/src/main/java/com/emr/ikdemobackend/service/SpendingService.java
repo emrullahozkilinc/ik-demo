@@ -6,8 +6,8 @@ import com.emr.ikdemobackend.entity.Spending;
 import com.emr.ikdemobackend.exception.SpendingNotFoundException;
 import com.emr.ikdemobackend.mapper.SpendingMapper;
 import com.emr.ikdemobackend.repository.SpendingRepository;
-import com.emr.ikdemobackend.repository.SpendingRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,12 +15,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class SpendingService {
 
 
-    private final SpendingMapper mapper;
-    private final SpendingRepository repository;
+    private SpendingMapper mapper;
+    private SpendingRepository repository;
 
     public List<SpendingDTO> getAll(){
         return repository.findAll()

@@ -47,6 +47,7 @@ public class ImpUserService implements UserService, UserDetailsService {
                 .orElseThrow(RoleCouldNotFoundException::new);
 
         user.getRoles().add(role);
+        userRepo.save(user);
         return "Role added to user.";
     }
 
