@@ -2,6 +2,8 @@ package com.emr.ikdemobackend.security.filter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.emr.ikdemobackend.security.dto.request.UserLoginRequestDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,10 +27,15 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
-        return authManager.authenticate(authToken);
+        UserLoginRequestDTO dto = null;
+        try {
+            dto = new ObjectMapper().readValue(request.getInputStream(),UserLoginRequestDTO.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword());
+        return authManager.authenticate(auth);
     }
 
     @Override
@@ -42,6 +49,6 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
 
-        response.setHeader("bearer-token", token);
+        response.setHeader("Authorization", token);
     }
 }

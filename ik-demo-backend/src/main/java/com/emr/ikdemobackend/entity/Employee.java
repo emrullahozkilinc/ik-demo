@@ -40,16 +40,21 @@ public class Employee {
     @OneToOne(cascade = REMOVE)
     private EmployeeAddress address;
 
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "last_name")
     private String lastName;
 
-    private int nationalId;
+    @Column(name = "national_id")
+    private Long nationalId;
 
     private String position;
 
+    @Column(name = "start_date")
     private LocalDate startDate;
 
+    @Column(name = "born_date")
     private LocalDate bornDate;
 
     private BigDecimal salary;
@@ -71,7 +76,7 @@ public class Employee {
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
-    public Employee(String firstName, String lastName, int nationalId, String position, LocalDate startDate,
+    public Employee(String firstName, String lastName, Long nationalId, String position, LocalDate startDate,
                     LocalDate bornDate, BigDecimal salary, Levels level, String title, String department,
                     String email, String phone) {
         this.firstName = firstName;

@@ -1,8 +1,6 @@
 package com.emr.ikdemobackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +19,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @ToString
 @NoArgsConstructor
+@Table(name = "employee_address")
 public class EmployeeAddress {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -32,6 +31,7 @@ public class EmployeeAddress {
 
     private String country;
 
+    @Column(name = "postal_code")
     private int postalCode;
 
     @CreationTimestamp

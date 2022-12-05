@@ -1,5 +1,6 @@
 package com.emr.ikdemobackend.dto.response;
 
+import com.emr.ikdemobackend.entity.EmployeeAddress;
 import com.emr.ikdemobackend.entity.enums.Levels;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 public class EmployeeDTO {
     private final String firstName;
     private final String lastName;
-    private final int nationalId;
+    private final Long nationalId;
     private final String position;
     private final LocalDate startDate;
     private final LocalDate bornDate;
@@ -22,4 +23,5 @@ public class EmployeeDTO {
     private final String department;
     private final String email;
     private final String phone;
+    private final EmployeeAddressDTO address;
 }

@@ -1,7 +1,6 @@
 package com.emr.ikdemobackend.security.controller;
 
 import com.emr.ikdemobackend.security.dto.request.AddRoleToUserDTO;
-import com.emr.ikdemobackend.security.dto.request.UserLoginRequestDTO;
 import com.emr.ikdemobackend.security.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

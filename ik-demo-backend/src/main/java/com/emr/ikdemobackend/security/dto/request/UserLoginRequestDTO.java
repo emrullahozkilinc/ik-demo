@@ -2,9 +2,10 @@ package com.emr.ikdemobackend.security.dto.request;
 
 import lombok.*;
 
-@Getter
-@RequiredArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserLoginRequestDTO {
-    public final String username;
-    public final String password;
+    public String username;
+    public String password;
 }
