@@ -33,7 +33,7 @@ function AddressModal(props) {
                     </tr>
                     <tr>
                         <th scope="row">Postal Code</th>
-                        <td>{props.usercontacts.code}</td>
+                        <td>{props.usercontacts.postalCode}</td>
                     </tr>
                     </tbody>
                 </Table>

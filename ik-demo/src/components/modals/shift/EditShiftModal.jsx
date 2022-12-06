@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
 import '../../../style/css/add-employee.css'
 
-function EditShiftModal() {
+function EditShiftModal(props) {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -20,13 +20,13 @@ function EditShiftModal() {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="dateOfShift" placeholder="Date Of Shift" type="datetime-local" />
+                                    <Input id="dateOfShift" placeholder="Date Of Shift" type="datetime-local" defaultValue={new Date(props.shift.date).toLocaleString("sv-SE")}/>
                                     <Label for="dateOfShift">Date Of Shift</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="shiftHours" placeholder="Shift Hours" type="number"/>
+                                    <Input id="shiftHours" placeholder="Shift Hours" type="number" defaultValue={props.shift.hours}/>
                                     <Label for="shiftHours">Shift Time (Hours)</Label>
                                 </FormGroup>
                             </Col>
@@ -34,7 +34,7 @@ function EditShiftModal() {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="descriptionOfShift" placeholder="Description" type="text-area" />
+                                    <Input id="descriptionOfShift" placeholder="Description" type="text-area" defaultValue={props.shift.description}/>
                                     <Label for="descriptionOfShift">Description Of Shift</Label>
                                 </FormGroup>
                             </Col>

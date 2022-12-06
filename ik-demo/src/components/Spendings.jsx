@@ -55,7 +55,7 @@ const Spendings = ({allSpendings}) => {
                                 <td>
                                     <Row>
                                         <Col>
-                                            <EditSpendingModal/>
+                                            <EditSpendingModal spending={spending}/>
                                         </Col>
                                         <Col>
                                             <DeleteSpendingModal/>

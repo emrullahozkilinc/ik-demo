@@ -1,13 +1,65 @@
 import React, {useState} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
 import '../../../style/css/add-employee.css'
+import axios from "axios";
+import {useAuth} from "../../auth/AuthContext";
 
 function EditEmployeeModal(props) {
 
 
     const [isOpen, setIsOpen] = useState(false);
+    let employee = props.worker;
 
-    const toggle = () => {setIsOpen(!isOpen)}
+    const {user} = useAuth();
+
+    const handleChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        let item = {...employee};
+        item[name] = value;
+        employee = item;
+        console.log(employee)
+    }
+
+    const toggle = (e) => {
+        setIsOpen(!isOpen)
+        if (e.target.name==='editEmpSuccess') {
+            axios.post("http://localhost:8080/api/v1/app/employees",
+                {
+                    'firstName': employee.firstName,
+                    'lastName': employee.lastName,
+                    'nationalId': employee.nationalId,
+                    'position': employee.position,
+                    'startDate': employee.startDate,
+                    'bornDate': employee.bornDate,
+                    'salary': employee.salary,
+                    'level': employee.level,
+                    'title': employee.title,
+                    'department': employee.department,
+                    'email': employee.email,
+                    'phone': employee.phone,
+                    'address': {
+                        'address': employee.address,
+                        'city': employee.city,
+                        'country': employee.country,
+                        'postalCode': employee.postalCode
+
+                    }}, {
+
+                    headers: {
+                        'Authorization': "Bearer " + user.token
+                    }
+                }
+            )
+                .then(r => {
+                    props.setEmployees([...props.employees,r.data])
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+        }
+    }
 
     return (
         <div>
@@ -21,13 +73,14 @@ function EditEmployeeModal(props) {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editFirstName" placeholder="Firstname" type="text" />
+                                    <Input id="editFirstName" placeholder="Firstname" type="text" name={"firstName"}
+                                           defaultValue={props.worker.firstName} onChange={handleChange}></Input>
                                     <Label for="editFirstName">Firstname</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editLastName" placeholder="Lastname" type="text" />
+                                    <Input id="editLastName" placeholder="Lastname" type="text" name={"lastName"} defaultValue={props.worker.lastName} onChange={handleChange}/>
                                     <Label for="editLastName">Lastname</Label>
                                 </FormGroup>
                             </Col>
@@ -35,13 +88,13 @@ function EditEmployeeModal(props) {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editNationalId" placeholder="National Id" type="number" />
+                                    <Input id="editNationalId" placeholder="National Id" type="number" name={"nationalId"} defaultValue={props.worker.nationalId} onChange={handleChange}/>
                                     <Label for="editNationalId">National Id</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editPosition" placeholder="Position" type="select" >
+                                    <Input id="editPosition" placeholder="Position" type="select" name={"position"} defaultValue={props.worker.position} onChange={handleChange}>
                                         {props.positions.map( (position, i) => {
                                             return (
                                                 <option key={i}>{position}</option>
@@ -55,13 +108,13 @@ function EditEmployeeModal(props) {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editDateOfStart" placeholder="Date Of Start" type="date" />
+                                    <Input id="editDateOfStart" placeholder="Date Of Start" type="date" name={"startDate"} defaultValue={new Date(props.worker.startDate).toLocaleDateString("sv-SE")} onChange={handleChange}/>
                                     <Label for="editDateOfStart">Date Of Start</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editBornDate" placeholder="Born Date" type="date" />
+                                    <Input id="editBornDate" placeholder="Born Date" type="date" name={"bornDate"} defaultValue={new Date(props.worker.bornDate).toLocaleDateString("sv-SE")} onChange={handleChange}/>
                                     <Label for="editBornDate">Born Date</Label>
                                 </FormGroup>
                             </Col>
@@ -69,13 +122,13 @@ function EditEmployeeModal(props) {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editSalary" placeholder="Edit Salary" type="number" />
-                                    <Label for="editSalary">Edit Salary (TL)</Label>
+                                    <Input id="editSalary" placeholder="Edit Salary" type="number" name={"salary"} defaultValue={props.worker.salary} onChange={handleChange}/>
+                                    <Label for="editSalary">Salary (TL)</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editLevel" placeholder="Level" type="select" >
+                                    <Input id="editLevel" placeholder="Level" type="select" name={"level"} defaultValue={props.worker.level} onChange={handleChange}>
                                         {props.levels.map( (level, i) => {
                                             return (<option key={i}>{level}</option>)
                                         })}
@@ -87,13 +140,13 @@ function EditEmployeeModal(props) {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editTitle" placeholder="Title" type="text" />
+                                    <Input id="editTitle" placeholder="Title" type="text" name={"title"} defaultValue={props.worker.title} onChange={handleChange}/>
                                     <Label for="editTitle">Title</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editDepartment" placeholder="Department" type="select" >
+                                    <Input id="editDepartment" placeholder="Department" type="select" name={"department"} defaultValue={props.worker.department} onChange={handleChange}>
                                         {props.departments.map( (department, i) => {
                                             return (<option key={i}>{department}</option>)
                                         })}
@@ -105,13 +158,13 @@ function EditEmployeeModal(props) {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editEmail" placeholder="Email" type="email" />
+                                    <Input id="editEmail" placeholder="Email" type="email" name={"email"} defaultValue={props.worker.email} onChange={handleChange}/>
                                     <Label for="editEmail">Email</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editPhone" placeholder="Phone" type="tel" />
+                                    <Input id="editPhone" placeholder="Phone" type="tel" name={"phone"} defaultValue={props.worker.phone} onChange={handleChange}/>
                                     <Label for="editPhone">Phone</Label>
                                 </FormGroup>
                             </Col>
@@ -119,27 +172,27 @@ function EditEmployeeModal(props) {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editEditress" placeholder="Editress" type="text-area" />
-                                    <Label for="editEditress">Editress</Label>
+                                    <Input id="editAddress" placeholder="Address" type="text-area" name={"address"} defaultValue={props.worker.address.address} onChange={handleChange}/>
+                                    <Label for="editAddress">Address</Label>
                                 </FormGroup>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editCountry" placeholder="Country" type="text" />
+                                    <Input id="editCountry" placeholder="Country" type="text" name={"country"} defaultValue={props.worker.address.country} onChange={handleChange}/>
                                     <Label for="editCountry">Country</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editCity" placeholder="City" type="text" />
+                                    <Input id="editCity" placeholder="City" type="text" name={"city"} defaultValue={props.worker.address.city} onChange={handleChange}/>
                                     <Label for="editCity">City</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="editCode" placeholder="Postal Code" type="number" />
+                                    <Input id="editCode" placeholder="Postal Code" type="number" name={"postalCode"} defaultValue={props.worker.address.postalCode} onChange={handleChange}/>
                                     <Label for="editCode">Postal Code</Label>
                                 </FormGroup>
                             </Col>
@@ -147,7 +200,7 @@ function EditEmployeeModal(props) {
                     </Form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="success" onClick={toggle}>Edit Employee</Button>{' '}
+                    <Button color="success" onClick={toggle} name="editEmpSuccess">Edit Employee</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>

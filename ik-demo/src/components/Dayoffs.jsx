@@ -57,7 +57,7 @@ const Dayoffs = ({allDayoffs}) => {
                                 <td>
                                     <Row>
                                         <Col>
-                                            <EditDayoffModal/>
+                                            <EditDayoffModal dayoff={dayoff}/>
                                         </Col>
                                         <Col>
                                             <DeleteDayoffModal/>

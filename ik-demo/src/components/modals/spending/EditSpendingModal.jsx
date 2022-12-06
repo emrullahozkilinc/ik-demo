@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
 import '../../../style/css/add-employee.css'
 
-function EditSpendingModal() {
+function EditSpendingModal(props) {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -21,7 +21,7 @@ function EditSpendingModal() {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="spendingType" placeholder="Spending Type" type="select" >
+                                    <Input id="spendingType" placeholder="Spending Type" type="select" defaultValue={props.spending.type}>
                                         <option>Food</option>
                                         <option>Educational</option>
                                         <option>Other</option>
@@ -31,7 +31,7 @@ function EditSpendingModal() {
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="spendingAmount" placeholder="Spending Amount" type="number"/>
+                                    <Input id="spendingAmount" placeholder="Spending Amount" type="number" defaultValue={props.spending.amount}/>
                                     <Label for="spendingAmount">Spending Amount (TL)</Label>
                                 </FormGroup>
                             </Col>
@@ -39,13 +39,13 @@ function EditSpendingModal() {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="dateOfReceipt" placeholder="Date Of Receipt" type="date" />
+                                    <Input id="dateOfReceipt" placeholder="Date Of Receipt" type="date" defaultValue={new Date(props.spending.receiptDate).toLocaleDateString("sv-SE")}/>
                                     <Label for="dateOfReceipt">Date Of Receipt</Label>
                                 </FormGroup>
                             </Col>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="taxRate" placeholder="Tax Rate" type="select" >
+                                    <Input id="taxRate" placeholder="Tax Rate" type="select" defaultValue={props.spending.taxRate}>
                                         <option>0</option>
                                         <option>1</option>
                                         <option>8</option>
@@ -58,7 +58,7 @@ function EditSpendingModal() {
                         <Row>
                             <Col>
                                 <FormGroup floating>
-                                    <Input id="descriptionOfSpending" placeholder="Description" type="text-area" />
+                                    <Input id="descriptionOfSpending" placeholder="Description" type="text-area" defaultValue={props.spending.description}/>
                                     <Label for="descriptionOfSpending">Description Of Spending</Label>
                                 </FormGroup>
                             </Col>

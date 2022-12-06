@@ -1,14 +1,14 @@
 import {createContext, useContext, useMemo} from "react";
-import {useNavigate} from "react-router-dom";
+import {json, useNavigate} from "react-router-dom";
 import axios from "axios";
+import $ from "jquery"
 import {useSessionStorage} from "usehooks-ts";
 
 const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useSessionStorage("auth",{
-        isLogin: false,
-        token: ""
+        token: "-"
     });
     const navigate = useNavigate();
 
@@ -16,16 +16,16 @@ export const AuthProvider = ({children}) => {
     const login = async (data) => {
         if (!user.isLogin) {
             try{
-                await axios.post("http://localhost:8080/api/v1/auth/login",
+                await axios.post("http://localhost:8080/login",
                 {
                         "username" : data.username,
                         "password" : data.password
                     }).then(res => {
+                        console.log(res.headers.get('authorization'))
                         if (res.status === 200) {
-                            axios.defaults.headers.common['token'] = user.token;
                             setUser({
                                 isLogin: true,
-                                token: res.data.token
+                                token: res.headers['authorization']
                             })
                             navigate("/employees")
                         } else {
@@ -35,6 +35,7 @@ export const AuthProvider = ({children}) => {
             }catch (error){
                 console.log(error);
             }
+
         }
     }
 

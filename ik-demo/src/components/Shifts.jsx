@@ -51,7 +51,7 @@ const Shifts = ({allShifts}) => {
                                 <td>
                                     <Row>
                                         <Col>
-                                            <EditShiftModal/>
+                                            <EditShiftModal shift={shift}/>
                                         </Col>
                                         <Col>
                                             <DeleteShiftModal/>

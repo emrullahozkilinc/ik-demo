@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-        {user.isLogin ? <NavBar/> : <div/>}
+        {user.token.startsWith("ey") ? <NavBar/> : <div/>}
 
         <Routes>
             <Route path="/login" element={<Login/>} exact/>
