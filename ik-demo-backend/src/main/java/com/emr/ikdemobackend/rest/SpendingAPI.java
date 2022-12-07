@@ -27,15 +27,15 @@ public class SpendingAPI {
         return ResponseEntity.ok(service.addSpending(spending));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<SpendingDTO> updateSpending(@PathVariable Long id,
+    @PutMapping("/{userNationalId}")
+    public ResponseEntity<SpendingDTO> updateSpending(@PathVariable Long userNationalId,
                                                       @Valid @RequestBody RequestSpendingDTO spending){
-        return ResponseEntity.ok(service.updateSpending(id, spending));
+        return ResponseEntity.ok(service.updateSpending(userNationalId, spending));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteSpending(@PathVariable Long id){
-        service.deleteSpending(id);
+    @DeleteMapping("/{userNationalId}")
+    public ResponseEntity<String> deleteSpending(@PathVariable Long userNationalId){
+        service.deleteSpending(userNationalId);
         return ResponseEntity.ok("Spending deleted.");
     }
 }

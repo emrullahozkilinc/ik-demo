@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/app/employees")
 @RequiredArgsConstructor
+@CrossOrigin
 public class EmployeeAPI {
 
     private final EmployeeService service;
@@ -28,15 +29,15 @@ public class EmployeeAPI {
         return ResponseEntity.ok(service.addEmployee(employee));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id,
+    @PutMapping("/{nationalId}")
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long nationalId,
                                                       @Valid @RequestBody RequestEmployeeDTO employee){
-        return ResponseEntity.ok(service.updateEmployee(id,employee));
+        return ResponseEntity.ok(service.updateEmployee(nationalId,employee));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable Long id){
-        service.deleteEmployee(id);
+    @DeleteMapping("/{nationalId}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long nationalId){
+        service.deleteEmployee(nationalId);
         return ResponseEntity.ok("Employee Deleted");
     }
 }

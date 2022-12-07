@@ -1,6 +1,7 @@
 package com.emr.ikdemobackend.dto.request;
 
 import com.emr.ikdemobackend.entity.enums.Levels;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
@@ -16,7 +17,9 @@ public class RequestEmployeeDTO {
     private final String lastName;
     private final Long nationalId;
     private final String position;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private final LocalDate startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private final LocalDate bornDate;
     private final BigDecimal salary;
     private final Levels level;

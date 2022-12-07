@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-import static jakarta.persistence.CascadeType.REMOVE;
+import static jakarta.persistence.CascadeType.ALL;
 
 @Getter
 @Setter
@@ -37,7 +37,7 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private List<Spending> spendings;
 
-    @OneToOne(cascade = REMOVE)
+    @OneToOne(cascade = ALL)
     private EmployeeAddress address;
 
     @Column(name = "first_name")

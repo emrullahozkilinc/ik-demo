@@ -28,15 +28,15 @@ public class DayoffAPI {
         return ResponseEntity.ok(service.addDayoff(dayoff));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<DayoffDTO> updateDayoff(@PathVariable Long id,
+    @PutMapping("/{userNationalId}")
+    public ResponseEntity<DayoffDTO> updateDayoff(@PathVariable Long userNationalId,
                                                       @Valid @RequestBody RequestDayoffDTO dayoff){
-        return ResponseEntity.ok(service.updateDayoff(id, dayoff));
+        return ResponseEntity.ok(service.updateDayoff(userNationalId, dayoff));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteDayoff(@PathVariable Long id){
-        service.deleteDayoff(id);
+    @DeleteMapping("/{userNationalId}")
+    public ResponseEntity<String> deleteDayoff(@PathVariable Long userNationalId){
+        service.deleteDayoff(userNationalId);
         return ResponseEntity.ok("Dayoff Deleted");
     }
 }

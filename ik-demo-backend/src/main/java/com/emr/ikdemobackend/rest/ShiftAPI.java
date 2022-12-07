@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,15 +26,15 @@ public class ShiftAPI {
         return ResponseEntity.ok(service.addShift(shift));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<ShiftDTO> updateShift(@PathVariable Long id,
+    @PutMapping("/{userNationalId}")
+    public ResponseEntity<ShiftDTO> updateShift(@PathVariable Long userNationalId,
                                                       @Valid @RequestBody RequestShiftDTO shift){
-        return ResponseEntity.ok(service.updateShift(id, shift));
+        return ResponseEntity.ok(service.updateShift(userNationalId, shift));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteShift(@PathVariable Long id){
-        service.deleteShift(id);
+    @DeleteMapping("/{userNationalId}")
+    public ResponseEntity<String> deleteShift(@PathVariable Long userNationalId){
+        service.deleteShift(userNationalId);
         return ResponseEntity.ok("Shift Deleted");
     }
 }
