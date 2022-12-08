@@ -4,19 +4,37 @@ import React, {useEffect, useState} from "react";
 import '../style/css/tables.css'
 import EditSpendingModal from "./modals/spending/EditSpendingModal";
 import DeleteSpendingModal from "./modals/spending/DeleteSpendingModal";
+import {useAuth} from "./auth/AuthContext";
+import axios from "axios";
 
-const Spendings = ({allSpendings}) => {
+const Spendings = () => {
     const [spendings, setSpendings] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [spendingsPerPage] = useState(6);
 
+    const {user} = useAuth();
+
     useEffect(() => {
-        setSpendings(allSpendings);
-    })
+        axios.get("http://localhost:8080/api/v1/app/spendings",
+            {
+                headers: {
+                    'Authorization': "Bearer " + user.token
+                }
+            })
+            .then(r => {
+                if (JSON.stringify(spendings) !== JSON.stringify(r.data)){
+                    setSpendings(r.data)
+                    console.log(r.data)
+                }
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }, [spendings])
 
     const indexOfLastSpending = currentPage * spendingsPerPage;
     const indexOfFirstSpending = indexOfLastSpending - spendingsPerPage;
-    const currentSpendings = allSpendings.slice(indexOfFirstSpending, indexOfLastSpending);
+    const currentSpendings = spendings.slice(indexOfFirstSpending, indexOfLastSpending);
     const totalPages = Math.ceil(spendings.length/spendingsPerPage);
 
     return (
@@ -43,11 +61,12 @@ const Spendings = ({allSpendings}) => {
                     <tbody>
 
                     {currentSpendings.map((spending, i) => {
+                        console.log(spending.id)
                         return (
                             <tr key={i}>
                                 <th scope="row">{indexOfFirstSpending+i+1}</th>
-                                <td>{spending.natId}</td>
-                                <td>{spending.type}</td>
+                                <td>{spending.employeeNationalId}</td>
+                                <td>{spending.spendingType}</td>
                                 <td>{new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(spending.amount)}</td>
                                 <td>{new Date(spending.receiptDate).toLocaleDateString()}</td>
                                 <td>{spending.taxRate}</td>
@@ -55,10 +74,18 @@ const Spendings = ({allSpendings}) => {
                                 <td>
                                     <Row>
                                         <Col>
-                                            <EditSpendingModal spending={spending}/>
+                                            <EditSpendingModal
+                                                setSpendings={setSpendings}
+                                                spending={spending}
+                                                spendings={spendings}
+                                            />
                                         </Col>
                                         <Col>
-                                            <DeleteSpendingModal/>
+                                            <DeleteSpendingModal
+                                                spendingId={spending.id}
+                                                setSpendings={setSpendings}
+                                                spendings={spendings}
+                                            />
                                         </Col>
                                     </Row>
                                 </td>

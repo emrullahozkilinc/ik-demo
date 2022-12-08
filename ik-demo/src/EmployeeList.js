@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import data from './users.json'
 import {Col, Row, Table} from "reactstrap";
 import AddEmployeeModal from "./components/modals/employee/AddEmployeeModal";
 import DayoffModal from "./components/modals/dayoff/DayoffModal";
@@ -97,22 +96,26 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
                                 <td>{worker.department}</td>
                                 <td>{worker.email}</td>
                                 <td>{worker.phone}</td>
-                                <td><DayoffModal desc={"Add Dayoff"}/></td>
-                                <td><SpendingModal/></td>
-                                <td><ShiftModal/></td>
+                                <td><DayoffModal employeeNationalId={worker.nationalId}/></td>
+                                <td><SpendingModal employeeNationalId={worker.nationalId}/></td>
+                                <td><ShiftModal employeeNationalId={worker.nationalId}/></td>
                                 <td><AddressModal usercontacts={worker.address}/></td>
                                 <td>
                                     <Row>
                                         <Col>
                                             <EditEmployeeModal
                                                 positions={["backend","frontend"]}
-                                                levels={["junior", "medium", "senior"]}
+                                                levels={["J1", "J2", "J3"]}
                                                 departments={["Finance", "Human Resources", "Development"]}
                                                 worker={worker}
                                             />
                                         </Col>
                                         <Col>
-                                            <DeleteEmployeeModal/>
+                                            <DeleteEmployeeModal
+                                                workerNatId={worker.nationalId}
+                                                setWorkers={setEmployees}
+                                                workers={employees}
+                                            />
                                         </Col>
                                     </Row>
                                 </td>

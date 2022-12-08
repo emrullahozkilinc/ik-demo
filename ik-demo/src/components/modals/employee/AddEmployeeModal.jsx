@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
-import '../../../style/css/add-employee.css'
+import '../../../style/css/add-button.css'
 import axios from "axios";
 import {useAuth} from "../../auth/AuthContext";
 
@@ -79,7 +79,7 @@ function AddEmployeeModal(props) {
 
     return (
         <div>
-            <Button id="add-employee" color="success" onClick={toggle}>Add Employee</Button>
+            <Button className="add-button" color="success" onClick={toggle}>Add Employee</Button>
             <Modal isOpen={isOpen} toggle={toggle} centered={true} size={"lg"}>
                 <ModalHeader>Add Employee</ModalHeader>
                 <ModalBody>

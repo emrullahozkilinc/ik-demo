@@ -4,19 +4,36 @@ import React, {useEffect, useState} from "react";
 import '../style/css/tables.css'
 import EditDayoffModal from "./modals/dayoff/EditDayoffModal";
 import DeleteDayoffModal from "./modals/dayoff/DeleteDayoffModal";
+import {useAuth} from "./auth/AuthContext";
+import axios from "axios";
 
-const Dayoffs = ({allDayoffs}) => {
+const Dayoffs = () => {
     const [dayoffs, setDayoffs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [dayoffsPerPage] = useState(6);
 
+    const {user} = useAuth();
+
     useEffect(() => {
-        setDayoffs(allDayoffs);
-    })
+        axios.get("http://localhost:8080/api/v1/app/dayoffs",
+            {
+                headers: {
+                    'Authorization': "Bearer " + user.token
+                }
+            })
+            .then(r => {
+                if (JSON.stringify(dayoffs) !== JSON.stringify(r.data)){
+                    setDayoffs(r.data)
+                }
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }, [dayoffs])
 
     const indexOfLastDayoff = currentPage * dayoffsPerPage;
     const indexOfFirstDayoff = indexOfLastDayoff - dayoffsPerPage;
-    const currentDayoffs = allDayoffs.slice(indexOfFirstDayoff, indexOfLastDayoff);
+    const currentDayoffs = dayoffs.slice(indexOfFirstDayoff, indexOfLastDayoff);
     const totalPages = Math.ceil(dayoffs.length/dayoffsPerPage);
 
     return (
@@ -47,20 +64,27 @@ const Dayoffs = ({allDayoffs}) => {
                         return (
                             <tr key={i}>
                                 <th scope="row">{indexOfFirstDayoff+i+1}</th>
-                                <td>{dayoff.natId}</td>
+                                <td>{dayoff.employeeNationalId}</td>
                                 <td>{dayoff.leaveType}</td>
                                 <td>{dayoff.daysOfLeave}</td>
-                                <td>{new Date(dayoff.startDate).toLocaleDateString()}</td>
-                                <td>{new Date(dayoff.endDate).toLocaleDateString()}</td>
+                                <td>{new Date(dayoff.dateOfStart).toLocaleDateString()}</td>
+                                <td>{new Date(dayoff.dateOfEnd).toLocaleDateString()}</td>
                                 <td>{dayoff.description}</td>
-                                <td>{new Date(dayoff.returnDate).toLocaleDateString()}</td>
+                                <td>{new Date(dayoff.dateOfReturn).toLocaleDateString()}</td>
                                 <td>
                                     <Row>
                                         <Col>
-                                            <EditDayoffModal dayoff={dayoff}/>
+                                            <EditDayoffModal
+                                                setDayoffs={setDayoffs}
+                                                dayoff={dayoff}
+                                                dayoffs={dayoffs}/>
                                         </Col>
                                         <Col>
-                                            <DeleteDayoffModal/>
+                                            <DeleteDayoffModal
+                                                dayoffId={dayoff.id}
+                                                setDayoffs={setDayoffs}
+                                                dayoffs={dayoffs}
+                                            />
                                         </Col>
                                     </Row>
                                 </td>

@@ -5,25 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36f0feca-795d-4771-9ecf-c7420980c545" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestEmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestEmployeeDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/EmployeeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/EmployeeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/rest/EmployeeAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/rest/EmployeeAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/exceptions/DayoffNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/exceptions/EmployeeNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/exceptions/ShiftNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/exceptions/SpendingNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/handler/SecurityExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestDayoffDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestDayoffDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestShiftDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestShiftDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestSpendingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/request/RequestSpendingDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/response/DayoffDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/response/DayoffDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/response/ShiftDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/response/ShiftDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/response/SpendingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/dto/response/SpendingDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/entity/Dayoff.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/entity/Dayoff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/entity/Spending.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/entity/Spending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/entity/enums/SpendingType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/entity/enums/SpendingType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/DayoffNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/EmployeeNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/ShiftNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/SpendingNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/exception/exception_handler/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/DayoffMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/DayoffMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/ShiftMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/ShiftMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/SpendingMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/mapper/SpendingMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/rest/DayoffAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/rest/DayoffAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/rest/ShiftAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/rest/ShiftAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/security/exception/RoleCouldNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/security/exception/RoleCouldNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/security/exception/UsernameCouldNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/security/exception/UsernameCouldNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/DayoffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/DayoffService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/ShiftService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/ShiftService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/SpendingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ik-demo-backend/src/main/java/com/emr/ikdemobackend/service/SpendingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/3/13254353b9c6b3335d1ba47070d20ec607064688" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/6/360ba1cf2ff33257a34bcc6881f50f17ff7f117c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/d/5dcedeb1a869f70c42f91168e54a516f94c7219a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/609961748c8537f625ec873ca7fe5de3c71e864a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/8171229f55cca3067f269bcdf5017ab4eef4e9bb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmployeeList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dayoffs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dayoffs.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Shifts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shifts.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Spendings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Spendings.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/auth/AuthContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/AuthContext.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/address/AddressModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/address/AddressModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/dayoff/DayoffModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/dayoff/DayoffModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/dayoff/DeleteDayoffModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/dayoff/DeleteDayoffModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modals/dayoff/EditDayoffModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/dayoff/EditDayoffModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modals/employee/AddEmployeeModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/employee/AddEmployeeModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/employee/DeleteEmployeeModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/employee/DeleteEmployeeModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modals/employee/EditEmployeeModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/employee/EditEmployeeModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/shift/DeleteShiftModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/shift/DeleteShiftModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modals/shift/EditShiftModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/shift/EditShiftModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/shift/ShiftModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/shift/ShiftModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/spending/DeleteSpendingModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/spending/DeleteSpendingModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modals/spending/EditSpendingModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/spending/EditSpendingModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/spending/SpendingModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/spending/SpendingModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/css/add-employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/css/add-button.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +161,13 @@
       <workItem from="1670233324652" duration="12656000" />
       <workItem from="1670269417343" duration="7126000" />
       <workItem from="1670307739357" duration="8035000" />
-      <workItem from="1670351829814" duration="2079000" />
+      <workItem from="1670351829814" duration="2455000" />
+      <workItem from="1670403228891" duration="6603000" />
+      <workItem from="1670418842499" duration="4051000" />
+      <workItem from="1670429575156" duration="2938000" />
+      <workItem from="1670445646996" duration="624000" />
+      <workItem from="1670449283244" duration="1455000" />
+      <workItem from="1670484304078" duration="24617000" />
     </task>
     <servers />
   </component>

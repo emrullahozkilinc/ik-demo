@@ -1,7 +1,6 @@
 import {createContext, useContext, useMemo} from "react";
-import {json, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import $ from "jquery"
 import {useSessionStorage} from "usehooks-ts";
 
 const AuthContext = createContext(undefined);
@@ -21,7 +20,6 @@ export const AuthProvider = ({children}) => {
                         "username" : data.username,
                         "password" : data.password
                     }).then(res => {
-                        console.log(res.headers.get('authorization'))
                         if (res.status === 200) {
                             setUser({
                                 isLogin: true,

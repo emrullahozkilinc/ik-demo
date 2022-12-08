@@ -1,12 +1,4 @@
 
-J
-src/components/Dayoffs.jsx,1\3\13254353b9c6b3335d1ba47070d20ec607064688
-\
-,src/components/modals/dayoff/DayoffModal.jsx,8\1\8171229f55cca3067f269bcdf5017ab4eef4e9bb
-Z
-*src/components/modals/shift/ShiftModal.jsx,3\6\360ba1cf2ff33257a34bcc6881f50f17ff7f117c
-`
-0src/components/modals/spending/SpendingModal.jsx,5\d\5dcedeb1a869f70c42f91168e54a516f94c7219a
 <
 src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 A
@@ -14,5 +6,11 @@ A
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
+^
+.src/components/modals/address/AddressModal.jsx,b\2\b2e04b57ba29a96ca88c34cb14916ac88ab1222c
+S
+#src/components/auth/AuthContext.jsx,1\6\16229c35305a23724ab4f95566cf1e23f3710946
+M
+src/components/auth/Login.jsx,5\2\5208ebf132a4034f7aff90678650014fe65e4786
 I
-src/components/Shifts.jsx,6\0\609961748c8537f625ec873ca7fe5de3c71e864a
+src/components/NewLog.jsx,1\f\1f54cc0c7ed626f2d14b273f2f7d6c7e8cc1789c

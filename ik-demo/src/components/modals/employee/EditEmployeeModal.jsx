@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
-import '../../../style/css/add-employee.css'
+import '../../../style/css/add-button.css'
 import axios from "axios";
 import {useAuth} from "../../auth/AuthContext";
 
 function EditEmployeeModal(props) {
-
 
     const [isOpen, setIsOpen] = useState(false);
     let employee = props.worker;
@@ -17,15 +16,17 @@ function EditEmployeeModal(props) {
         const value = target.value;
         const name = target.name;
         let item = {...employee};
-        item[name] = value;
+        if (name === 'address' || name === 'country' || name === 'city' || name === 'postalCode')
+            item['address'][name] = value;
+        else
+            item[name] = value;
         employee = item;
-        console.log(employee)
     }
 
     const toggle = (e) => {
         setIsOpen(!isOpen)
         if (e.target.name==='editEmpSuccess') {
-            axios.post("http://localhost:8080/api/v1/app/employees",
+            axios.put("http://localhost:8080/api/v1/app/employees/" + props.worker.nationalId,
                 {
                     'firstName': employee.firstName,
                     'lastName': employee.lastName,
@@ -40,10 +41,10 @@ function EditEmployeeModal(props) {
                     'email': employee.email,
                     'phone': employee.phone,
                     'address': {
-                        'address': employee.address,
-                        'city': employee.city,
-                        'country': employee.country,
-                        'postalCode': employee.postalCode
+                        'address': employee.address.address,
+                        'city': employee.address.city,
+                        'country': employee.address.country,
+                        'postalCode': employee.address.postalCode
 
                     }}, {
 

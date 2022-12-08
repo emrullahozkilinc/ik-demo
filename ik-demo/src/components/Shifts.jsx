@@ -4,19 +4,36 @@ import React, {useEffect, useState} from "react";
 import '../style/css/tables.css'
 import EditShiftModal from "./modals/shift/EditShiftModal";
 import DeleteShiftModal from "./modals/shift/DeleteShiftModal";
+import axios from "axios";
+import {useAuth} from "./auth/AuthContext";
 
-const Shifts = ({allShifts}) => {
+const Shifts = () => {
     const [shifts, setShifts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [shiftsPerPage] = useState(6);
 
+    const {user} = useAuth();
+
     useEffect(() => {
-        setShifts(allShifts);
-    })
+        axios.get("http://localhost:8080/api/v1/app/shifts",
+            {
+                headers: {
+                    'Authorization': "Bearer " + user.token
+                }
+            })
+            .then(r => {
+                if (JSON.stringify(shifts) !== JSON.stringify(r.data)){
+                    setShifts(r.data)
+                }
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }, [shifts])
 
     const indexOfLastShift = currentPage * shiftsPerPage;
     const indexOfFirstShift = indexOfLastShift - shiftsPerPage;
-    const currentShifts = allShifts.slice(indexOfFirstShift, indexOfLastShift);
+    const currentShifts = shifts.slice(indexOfFirstShift, indexOfLastShift);
     const totalPages = Math.ceil(shifts.length/shiftsPerPage);
 
     return (
@@ -44,17 +61,25 @@ const Shifts = ({allShifts}) => {
                         return (
                             <tr key={i}>
                                 <th scope="row">{indexOfFirstShift+i+1}</th>
-                                <td>{shift.natId}</td>
+                                <td>{shift.employeeNationalId}</td>
                                 <td>{new Date(shift.date).toLocaleDateString()}</td>
                                 <td>{shift.hours}</td>
                                 <td>{shift.description}</td>
                                 <td>
                                     <Row>
                                         <Col>
-                                            <EditShiftModal shift={shift}/>
+                                            <EditShiftModal
+                                                setShifts={setShifts}
+                                                shift={shift}
+                                                shifts={shifts}
+                                            />
                                         </Col>
                                         <Col>
-                                            <DeleteShiftModal/>
+                                            <DeleteShiftModal
+                                                shiftId={shift.id}
+                                                setShifts={setShifts}
+                                                shifts={shifts}
+                                            />
                                         </Col>
                                     </Row>
                                 </td>
