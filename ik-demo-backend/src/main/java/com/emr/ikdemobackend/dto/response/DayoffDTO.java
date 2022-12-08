@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 public class DayoffDTO {
+    private final Long id;
 
     private final int employeeNationalId;
 

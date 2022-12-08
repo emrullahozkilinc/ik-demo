@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -28,15 +27,15 @@ public class DayoffAPI {
         return ResponseEntity.ok(service.addDayoff(dayoff));
     }
 
-    @PutMapping("/{userNationalId}")
-    public ResponseEntity<DayoffDTO> updateDayoff(@PathVariable Long userNationalId,
+    @PutMapping("/{dayoffId}")
+    public ResponseEntity<DayoffDTO> updateDayoff(@PathVariable Long dayoffId,
                                                       @Valid @RequestBody RequestDayoffDTO dayoff){
-        return ResponseEntity.ok(service.updateDayoff(userNationalId, dayoff));
+        return ResponseEntity.ok(service.updateDayoff(dayoffId, dayoff));
     }
 
-    @DeleteMapping("/{userNationalId}")
-    public ResponseEntity<String> deleteDayoff(@PathVariable Long userNationalId){
-        service.deleteDayoff(userNationalId);
+    @DeleteMapping("/{dayoffId}")
+    public ResponseEntity<String> deleteDayoff(@PathVariable Long dayoffId){
+        service.deleteDayoff(dayoffId);
         return ResponseEntity.ok("Dayoff Deleted");
     }
 }

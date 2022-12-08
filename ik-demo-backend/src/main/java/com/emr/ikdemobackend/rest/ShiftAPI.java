@@ -26,15 +26,15 @@ public class ShiftAPI {
         return ResponseEntity.ok(service.addShift(shift));
     }
 
-    @PutMapping("/{userNationalId}")
-    public ResponseEntity<ShiftDTO> updateShift(@PathVariable Long userNationalId,
+    @PutMapping("/{shiftId}")
+    public ResponseEntity<ShiftDTO> updateShift(@PathVariable Long shiftId,
                                                       @Valid @RequestBody RequestShiftDTO shift){
-        return ResponseEntity.ok(service.updateShift(userNationalId, shift));
+        return ResponseEntity.ok(service.updateShift(shiftId, shift));
     }
 
-    @DeleteMapping("/{userNationalId}")
-    public ResponseEntity<String> deleteShift(@PathVariable Long userNationalId){
-        service.deleteShift(userNationalId);
+    @DeleteMapping("/{shiftId}")
+    public ResponseEntity<String> deleteShift(@PathVariable Long shiftId){
+        service.deleteShift(shiftId);
         return ResponseEntity.ok("Shift Deleted");
     }
 }

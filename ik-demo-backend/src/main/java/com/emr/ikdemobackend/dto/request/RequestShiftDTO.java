@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @ToString
 @RequiredArgsConstructor
 public class RequestShiftDTO {
-    private final int employeeNationalId;
+    private final Long employeeNationalId;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private final LocalDateTime date;
     private final int hours;

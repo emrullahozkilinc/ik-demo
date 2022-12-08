@@ -2,12 +2,14 @@ package com.emr.ikdemobackend.service;
 
 import com.emr.ikdemobackend.dto.request.RequestSpendingDTO;
 import com.emr.ikdemobackend.dto.response.SpendingDTO;
+import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.Spending;
-import com.emr.ikdemobackend.exception.SpendingNotFoundException;
+import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
+import com.emr.ikdemobackend.exception.exceptions.SpendingNotFoundException;
 import com.emr.ikdemobackend.mapper.SpendingMapper;
+import com.emr.ikdemobackend.repository.EmployeeRepository;
 import com.emr.ikdemobackend.repository.SpendingRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,27 +22,33 @@ public class SpendingService {
 
 
     private SpendingMapper mapper;
-    private SpendingRepository repository;
+    private SpendingRepository spendingRepository;
+    private EmployeeRepository employeeRepository;
 
     public List<SpendingDTO> getAll(){
-        return repository.findAll()
+        return spendingRepository.findAll()
                 .stream().map(mapper::toSpendingDTO)
                 .collect(Collectors.toList());
     }
 
     public SpendingDTO getSpending(Long id){
-        return repository.findById(id)
+        return spendingRepository.findById(id)
                 .map(mapper::toSpendingDTO)
                 .orElseThrow(() -> new SpendingNotFoundException("This Spending not found in system."));
     }
 
     public SpendingDTO addSpending(RequestSpendingDTO requestSpendingDTO){
+        Employee employee = employeeRepository
+                .findByNationalId(requestSpendingDTO.getEmployeeNationalId())
+                .orElseThrow(()-> new EmployeeNotFoundException("This employee not found in sysytem."));
         Spending spending = mapper.toSpendingFromRequestSpendingDTO(requestSpendingDTO);
-        return mapper.toSpendingDTO(repository.save(spending));
+        System.err.println(employee.getFirstName());
+        spending.setEmployee(employee);
+        return mapper.toSpendingDTO(spendingRepository.save(spending));
     }
 
     public SpendingDTO updateSpending(Long id, RequestSpendingDTO requestSpendingDTO){
-        Optional<Spending> spendingById = repository.findById(id);
+        Optional<Spending> spendingById = spendingRepository.findById(id);
         Spending mappedSpending = mapper.toSpendingFromRequestSpendingDTO(requestSpendingDTO);
 
         spendingById.ifPresent(spending -> {
@@ -49,7 +57,7 @@ public class SpendingService {
             spending.setAmount(mappedSpending.getAmount());
             spending.setReceiptDate(mappedSpending.getReceiptDate());
             spending.setTaxRate(mappedSpending.getTaxRate());
-            repository.save(spending);
+            spendingRepository.save(spending);
         });
 
         return spendingById.map(mapper::toSpendingDTO)
@@ -57,9 +65,9 @@ public class SpendingService {
     }
 
     public SpendingDTO deleteSpending(Long id){
-        Optional<Spending> spendingById = repository.findById(id);
+        Optional<Spending> spendingById = spendingRepository.findById(id);
 
-        spendingById.ifPresent(repository::delete);
+        spendingById.ifPresent(spendingRepository::delete);
 
         return spendingById.map(mapper::toSpendingDTO)
                 .orElseThrow(() -> new SpendingNotFoundException("This Spending not found in system."));

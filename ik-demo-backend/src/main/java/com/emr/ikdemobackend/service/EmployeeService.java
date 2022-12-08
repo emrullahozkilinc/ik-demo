@@ -4,7 +4,7 @@ import com.emr.ikdemobackend.dto.request.RequestEmployeeDTO;
 import com.emr.ikdemobackend.dto.response.EmployeeDTO;
 import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.EmployeeAddress;
-import com.emr.ikdemobackend.exception.EmployeeNotFoundException;
+import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
 import com.emr.ikdemobackend.mapper.EmployeeMapper;
 import com.emr.ikdemobackend.repository.EmployeeAddressRepository;
 import com.emr.ikdemobackend.repository.EmployeeRepository;

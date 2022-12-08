@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Getter
 @RequiredArgsConstructor
 public class SpendingDTO {
-    private final int employeeNationalId;
+    private final Long id;
+    private final Long employeeNationalId;
     private final SpendingType spendingType;
     private final BigDecimal amount;
     private final LocalDate receiptDate;

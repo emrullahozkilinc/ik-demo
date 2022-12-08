@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @ToString
 @RequiredArgsConstructor
 public class RequestSpendingDTO {
-    private final int employeeNationalId;
+    private final Long employeeNationalId;
     private final SpendingType spendingType;
     private final BigDecimal amount;
     @JsonFormat(pattern = "yyyy-MM-dd")

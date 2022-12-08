@@ -26,15 +26,19 @@ public class Dayoff {
     @ManyToOne
     private Employee employee;
 
+    @Column(name = "leave_type")
     @Enumerated(EnumType.STRING)
     private LeaveType leaveType;
 
+    @Column(name = "days_of_leave")
     private int daysOfLeave;
-
+    @Column(name = "date_of_start")
     private LocalDateTime dateOfStart;
 
+    @Column(name = "date_of_end")
     private LocalDateTime dateOfEnd;
 
+    @Column(name = "date_of_return")
     private LocalDateTime dateOfReturn;
 
     private String description;

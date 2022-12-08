@@ -3,12 +3,13 @@ package com.emr.ikdemobackend.service;
 import com.emr.ikdemobackend.dto.request.RequestDayoffDTO;
 import com.emr.ikdemobackend.dto.response.DayoffDTO;
 import com.emr.ikdemobackend.entity.Dayoff;
-import com.emr.ikdemobackend.exception.DayoffNotFoundException;
+import com.emr.ikdemobackend.entity.Employee;
+import com.emr.ikdemobackend.exception.exceptions.DayoffNotFoundException;
+import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
 import com.emr.ikdemobackend.mapper.DayoffMapper;
 import com.emr.ikdemobackend.repository.DayoffRepository;
+import com.emr.ikdemobackend.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,27 +21,32 @@ import java.util.stream.Collectors;
 public class DayoffService {
 
     private DayoffMapper mapper;
-    private DayoffRepository repository;
+    private EmployeeRepository employeeRepository;
+    private DayoffRepository dayoffRepository;
 
     public List<DayoffDTO> getAll(){
-        return repository.findAll()
+        return dayoffRepository.findAll()
                 .stream().map(mapper::toDayoffDTO)
                 .collect(Collectors.toList());
     }
 
     public DayoffDTO getDayoff(Long id){
-        return repository.findById(id)
+        return dayoffRepository.findById(id)
                 .map(mapper::toDayoffDTO)
                 .orElseThrow(() -> new DayoffNotFoundException("This Dayoff not found in system."));
     }
 
     public DayoffDTO addDayoff(RequestDayoffDTO requestDayoffDTO){
+        Employee employee = employeeRepository
+                .findByNationalId(requestDayoffDTO.getEmployeeNationalId())
+                .orElseThrow(()->new EmployeeNotFoundException("This employee not found in system"));
         Dayoff dayoff = mapper.toDayoffFromRequestDayoffDTO(requestDayoffDTO);
-        return mapper.toDayoffDTO(repository.save(dayoff));
+        dayoff.setEmployee(employee);
+        return mapper.toDayoffDTO(dayoffRepository.save(dayoff));
     }
 
     public DayoffDTO updateDayoff(Long id, RequestDayoffDTO requestDayoffDTO){
-        Optional<Dayoff> dayoffById = repository.findById(id);
+        Optional<Dayoff> dayoffById = dayoffRepository.findById(id);
         Dayoff mappedDayoff = mapper.toDayoffFromRequestDayoffDTO(requestDayoffDTO);
 
         dayoffById.ifPresent(dayoff -> {
@@ -50,7 +56,7 @@ public class DayoffService {
             dayoff.setDateOfStart(mappedDayoff.getDateOfStart());
             dayoff.setDaysOfLeave(mappedDayoff.getDaysOfLeave());
             dayoff.setLeaveType(mappedDayoff.getLeaveType());
-            repository.save(dayoff);
+            dayoffRepository.save(dayoff);
         });
 
         return dayoffById.map(mapper::toDayoffDTO)
@@ -58,9 +64,9 @@ public class DayoffService {
     }
 
     public DayoffDTO deleteDayoff(Long id){
-        Optional<Dayoff> dayoffById = repository.findById(id);
+        Optional<Dayoff> dayoffById = dayoffRepository.findById(id);
 
-        dayoffById.ifPresent(repository::delete);
+        dayoffById.ifPresent(dayoffRepository::delete);
 
         return dayoffById.map(mapper::toDayoffDTO)
                 .orElseThrow(() -> new DayoffNotFoundException("This Dayoff not found in system."));

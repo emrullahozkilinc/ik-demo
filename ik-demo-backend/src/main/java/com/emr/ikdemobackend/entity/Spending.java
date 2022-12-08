@@ -29,12 +29,15 @@ public class Spending {
     private Employee employee;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "spending_type")
     private SpendingType spendingType;
 
     private BigDecimal amount;
 
+    @Column(name = "receipt_date")
     private LocalDate receiptDate;
 
+    @Column(name = "tax_rate")
     private int taxRate;
 
     private String description;

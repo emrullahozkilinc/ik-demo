@@ -1,4 +1,4 @@
-package com.emr.ikdemobackend.dto.request;
+package com.emr.ikdemobackend.dto.request.update;
 
 import com.emr.ikdemobackend.entity.enums.LeaveType;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -11,9 +11,8 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @RequiredArgsConstructor
-public class RequestDayoffDTO {
+public class EditRequestDayoffDTO {
 
-    private final Long employeeNationalId;
     private final LeaveType leaveType;
     private final int daysOfLeave;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
