@@ -1,5 +1,18 @@
 import React, {useState} from 'react';
-import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
+import {
+    Button,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Row,
+    UncontrolledAlert
+} from 'reactstrap'
 import {useAuth} from "../../auth/AuthContext";
 import axios from "axios";
 
@@ -7,6 +20,7 @@ function DayoffModal(props) {
 
     const {user} = useAuth();
 
+    const [errors, setErrors] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [dayoff, setDayoff] = useState({
         'leaveType' : '',
@@ -36,12 +50,15 @@ function DayoffModal(props) {
             )
                 .then(r => {
                     console.log(r)
+                    setErrors([]);
+                    setIsOpen(!isOpen);
                 })
                 .catch(e => {
-                    console.log(e)
+                    console.log(e);
+                    setErrors(e.response.data);
                 })
-        }
-        setIsOpen(!isOpen)
+        } else
+            setIsOpen(!isOpen);
     }
 
     const handleChange = (event) => {
@@ -55,10 +72,15 @@ function DayoffModal(props) {
 
     return (
         <div>
-            <Button color="primary" outline onClick={toggle}>Add Dayoff</Button>
+            <Button color="primary" outline onClick={toggle} name="addDayoffButton">Add Dayoff</Button>
             <Modal isOpen={isOpen} toggle={toggle} centered={true}>
             <ModalHeader>Add Dayoff</ModalHeader>
             <ModalBody>
+                {errors.map(err =>
+                    <UncontrolledAlert color="danger">
+                        {err.message}
+                    </UncontrolledAlert>
+                )}
                 <Form>
                     <Row>
                         <Col>

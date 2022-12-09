@@ -1,11 +1,25 @@
 import React, {useState} from 'react';
-import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
+import {
+    Button,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Row,
+    UncontrolledAlert
+} from 'reactstrap'
 import '../../../style/css/add-button.css'
 import axios from "axios";
 import {useAuth} from "../../auth/AuthContext";
 
 function EditEmployeeModal(props) {
 
+    const [errors, setErrors] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     let employee = props.worker;
 
@@ -24,7 +38,6 @@ function EditEmployeeModal(props) {
     }
 
     const toggle = (e) => {
-        setIsOpen(!isOpen)
         if (e.target.name==='editEmpSuccess') {
             axios.put("http://localhost:8080/api/v1/app/employees/" + props.worker.nationalId,
                 {
@@ -54,12 +67,14 @@ function EditEmployeeModal(props) {
                 }
             )
                 .then(r => {
-                    props.setEmployees([...props.employees,r.data])
+                    setErrors([]);
+                    setIsOpen(!isOpen);
                 })
                 .catch(e => {
-                    console.log(e)
+                    setErrors(e.response.data);
                 })
-        }
+        } else
+            setIsOpen(!isOpen);
     }
 
     return (
@@ -70,6 +85,11 @@ function EditEmployeeModal(props) {
             <Modal isOpen={isOpen} toggle={toggle} centered={true} size={"lg"}>
                 <ModalHeader>Edit Employee</ModalHeader>
                 <ModalBody>
+                    {errors.map(err =>
+                        <UncontrolledAlert color="danger">
+                            {err.message}
+                        </UncontrolledAlert>
+                    )}
                     <Form>
                         <Row>
                             <Col>

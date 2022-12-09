@@ -1,11 +1,25 @@
 import React, {useState} from 'react';
-import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
+import {
+    Button,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Row,
+    UncontrolledAlert
+} from 'reactstrap'
 import '../../../style/css/add-button.css'
 import {useAuth} from "../../auth/AuthContext";
 import axios from "axios";
 
 function EditShiftModal(props) {
 
+    const [errors, setErrors] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     let shift = props.shift;
 
@@ -21,7 +35,6 @@ function EditShiftModal(props) {
     }
 
     const toggle = async (e) => {
-        setIsOpen(!isOpen);
         if (e.target.name === 'editShiftSuccess'){
             await axios.put("http://localhost:8080/api/v1/app/shifts/" + props.shift.id,
                 {
@@ -33,10 +46,16 @@ function EditShiftModal(props) {
                     headers: {
                         'Authorization': "Bearer " + user.token
                     }
-                }).then(r => {
-                // props.setDayoffs([...props.dayoffs, r.data])
-            })
-        }
+                })
+                .then(r => {
+                    setErrors([]);
+                    setIsOpen(!isOpen);
+                })
+                .catch(e => {
+                    setErrors(e.response.data);
+                })
+        } else
+            setIsOpen(!isOpen);
     }
 
     return (
@@ -47,6 +66,11 @@ function EditShiftModal(props) {
             <Modal isOpen={isOpen} toggle={toggle} centered={true}>
                 <ModalHeader>Edit Shift</ModalHeader>
                 <ModalBody>
+                    {errors.map(err =>
+                        <UncontrolledAlert color="danger">
+                            {err.message}
+                        </UncontrolledAlert>
+                    )}
                     <Form>
                         <Row>
                             <Col>

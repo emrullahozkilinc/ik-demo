@@ -1,5 +1,18 @@
 import React, {useState} from 'react';
-import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
+import {
+    Button,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Row,
+    UncontrolledAlert
+} from 'reactstrap'
 import '../../../style/css/add-button.css'
 import axios from "axios";
 import {useAuth} from "../../auth/AuthContext";
@@ -8,6 +21,7 @@ function AddEmployeeModal(props) {
 
     const {user} = useAuth();
 
+    const [errors, setErrors] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [worker, setWorker] = useState({
         'firstName' : '',
@@ -30,7 +44,6 @@ function AddEmployeeModal(props) {
     });
 
     const toggle = (e) => {
-        setIsOpen(!isOpen)
         if (e.target.name==='addEmpSuccess') {
             axios.post("http://localhost:8080/api/v1/app/employees",
                 {
@@ -60,12 +73,14 @@ function AddEmployeeModal(props) {
                 }
                 )
                 .then(r => {
-                    props.setEmployees([...props.employees,r.data])
+                    setErrors([]);
+                    setIsOpen(!isOpen);
                 })
                 .catch(e => {
-                    console.log(e)
+                    setErrors(e.response.data);
                 })
-        }
+        } else
+            setIsOpen(!isOpen);
     }
 
     const handleChange = (event) => {
@@ -83,6 +98,11 @@ function AddEmployeeModal(props) {
             <Modal isOpen={isOpen} toggle={toggle} centered={true} size={"lg"}>
                 <ModalHeader>Add Employee</ModalHeader>
                 <ModalBody>
+                    {errors.map(err =>
+                        <UncontrolledAlert color="danger">
+                            {err.message}
+                        </UncontrolledAlert>
+                    )}
                     <Form>
                         <Row>
                             <Col>

@@ -14,3 +14,13 @@ M
 src/components/auth/Login.jsx,5\2\5208ebf132a4034f7aff90678650014fe65e4786
 I
 src/components/NewLog.jsx,1\f\1f54cc0c7ed626f2d14b273f2f7d6c7e8cc1789c
+J
+src/components/Request.jsx,9\1\913f8e6fb6080c15105991e19417e0fe1a1dfbdf
+H
+src/components/Users.jsx,0\e\0e147ab105f540650b71078624e369a723ed150a
+L
+src/style/css/add-button.css,0\2\0213076039ba659c058aab88a6ca2cf9f595e3b7
+f
+6src/components/modals/employee/DeleteEmployeeModal.jsx,d\c\dc16291adc759fe7e9e7fef87a7231fe17cd0463
+J
+src/components/Dayoffs.jsx,1\3\13254353b9c6b3335d1ba47070d20ec607064688

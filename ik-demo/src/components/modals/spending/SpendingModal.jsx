@@ -1,6 +1,19 @@
 import React, {useState} from 'react';
 import '../../../style/css/add-button.css'
-import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
+import {
+    Button,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Row,
+    UncontrolledAlert
+} from 'reactstrap'
 import axios from "axios";
 import {useAuth} from "../../auth/AuthContext";
 
@@ -8,6 +21,7 @@ function SpendingModal(props) {
 
     const {user} = useAuth();
 
+    const [errors, setErrors] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [spending, setSpending] = useState({
         'spendingType': '',
@@ -41,10 +55,18 @@ function SpendingModal(props) {
                     headers: {
                         'Authorization': "Bearer " + user.token
                     }
-                }).then(r => {
-                // props.setDayoffs([...props.dayoffs, r.data])
-            }).catch(e => console.log(e))
-        }
+                })
+                .then(r => {
+                    console.log(r)
+                    setErrors([]);
+                    setIsOpen(!isOpen);
+                })
+                .catch(e => {
+                    console.log(e);
+                    setErrors(e.response.data);
+                })
+        } else
+            setIsOpen(!isOpen);
     }
 
     const handleChange = (event) => {
@@ -62,7 +84,11 @@ function SpendingModal(props) {
             <Modal isOpen={isOpen} toggle={toggle} centered={true}>
                 <ModalHeader>Add Spending</ModalHeader>
                 <ModalBody>
-
+                    {errors.map(err =>
+                        <UncontrolledAlert color="danger">
+                            {err.message}
+                        </UncontrolledAlert>
+                    )}
                     <Form>
                         <Row>
                             <Col>

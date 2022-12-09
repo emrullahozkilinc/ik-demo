@@ -1,11 +1,25 @@
 import React, {useState} from 'react';
-import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
+import {
+    Button,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Row,
+    UncontrolledAlert
+} from 'reactstrap'
 import '../../../style/css/add-button.css'
 import {useAuth} from "../../auth/AuthContext";
 import axios from "axios";
 
 function EditDayoffModal(props) {
 
+    const [errors, setErrors] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     let dayoff = props.dayoff;
 
@@ -21,7 +35,6 @@ function EditDayoffModal(props) {
     }
 
     const toggle = async (e) => {
-        setIsOpen(!isOpen);
         if (e.target.name === 'editDayoffSuccess'){
             await axios.put("http://localhost:8080/api/v1/app/dayoffs/" + props.dayoff.id,
                 {
@@ -37,9 +50,13 @@ function EditDayoffModal(props) {
                         'Authorization': "Bearer " + user.token
                     }
                 }).then(r => {
-                // props.setDayoffs([...props.dayoffs, r.data])
-            })
-        }
+                    setErrors([]);
+                    setIsOpen(!isOpen);
+                }).catch(e => {
+                    setErrors(e.response.data);
+                })
+        } else
+            setIsOpen(!isOpen);
     }
 
     return (
@@ -50,6 +67,11 @@ function EditDayoffModal(props) {
             <Modal isOpen={isOpen} toggle={toggle} centered={true}>
                 <ModalHeader>Edit Dayoff</ModalHeader>
                 <ModalBody>
+                    {errors.map(err =>
+                        <UncontrolledAlert color="danger">
+                            {err.message}
+                        </UncontrolledAlert>
+                    )}
                     <Form>
                         <Row>
                             <Col>

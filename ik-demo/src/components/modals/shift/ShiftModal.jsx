@@ -1,6 +1,19 @@
 import React, {useState} from 'react';
 import '../../../style/css/add-button.css'
-import {Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, ModalFooter, Row} from 'reactstrap'
+import {
+    Button,
+    Col,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Row,
+    UncontrolledAlert
+} from 'reactstrap'
 import {useAuth} from "../../auth/AuthContext";
 import axios from "axios";
 
@@ -8,6 +21,7 @@ function ShiftModal(props) {
 
     const {user} = useAuth();
 
+    const [errors, setErrors] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [shift, setShift] = useState({
         'date': new Date(),
@@ -28,10 +42,15 @@ function ShiftModal(props) {
                         'Authorization': "Bearer " + user.token
                     }
                 })
-                .then(r => console.log(r))
-                .catch(e => console.log(e))
-        }
-        setIsOpen(!isOpen)
+                .then(r => {
+                    setErrors([]);
+                    setIsOpen(!isOpen);
+                })
+                .catch(e => {
+                    setErrors(e.response.data);
+                })
+        } else
+            setIsOpen(!isOpen);
     }
 
     const handleChange = (event) => {
@@ -49,6 +68,11 @@ function ShiftModal(props) {
             <Modal isOpen={isOpen} toggle={toggle} centered={true}>
                 <ModalHeader>Add Shift</ModalHeader>
                 <ModalBody>
+                    {errors.map(err =>
+                        <UncontrolledAlert color="danger">
+                            {err.message}
+                        </UncontrolledAlert>
+                    )}
                     <Form>
                         <Row>
                             <Col>
