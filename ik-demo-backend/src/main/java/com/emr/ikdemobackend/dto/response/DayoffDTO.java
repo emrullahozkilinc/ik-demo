@@ -13,7 +13,7 @@ public class DayoffDTO {
 
     private final int employeeNationalId;
 
-    private final LeaveType leaveType;
+    private final String leaveType;
 
     private final int daysOfLeave;
 

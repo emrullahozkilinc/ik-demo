@@ -32,10 +32,12 @@ public class Shift {
     private String description;
 
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     public Shift(Employee employee, LocalDateTime date, int hours, String description) {
         this.employee = employee;

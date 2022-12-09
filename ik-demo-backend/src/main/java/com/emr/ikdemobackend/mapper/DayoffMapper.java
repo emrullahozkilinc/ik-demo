@@ -11,6 +11,7 @@ public interface DayoffMapper {
     Dayoff toDayoff(DayoffDTO dayoffDTO);
 
     @Mapping(target = "employeeNationalId", source = "employee.nationalId")
+    @Mapping(target = "leaveType", expression = "java(dayoff.getLeaveType().name())")
     DayoffDTO toDayoffDTO(Dayoff dayoff);
 
     Dayoff toDayoffFromRequestDayoffDTO(RequestDayoffDTO requestDayoffDTO);

@@ -46,7 +46,7 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "national_id")
+    @Column(name = "national_id", unique = true)
     private Long nationalId;
 
     private String position;
@@ -71,10 +71,12 @@ public class Employee {
     private String phone;
 
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     public Employee(String firstName, String lastName, Long nationalId, String position, LocalDate startDate,
                     LocalDate bornDate, BigDecimal salary, Levels level, String title, String department,

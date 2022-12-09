@@ -1,7 +1,9 @@
 package com.emr.ikdemobackend.entity;
 
 import com.emr.ikdemobackend.entity.enums.LeaveType;
+import com.emr.ikdemobackend.validator.DayoffValid;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +20,7 @@ import java.util.Objects;
 @Entity
 @ToString
 @NoArgsConstructor
+@DayoffValid
 public class Dayoff {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +35,7 @@ public class Dayoff {
 
     @Column(name = "days_of_leave")
     private int daysOfLeave;
+
     @Column(name = "date_of_start")
     private LocalDateTime dateOfStart;
 

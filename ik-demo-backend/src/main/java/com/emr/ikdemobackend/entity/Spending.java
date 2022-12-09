@@ -2,6 +2,7 @@ package com.emr.ikdemobackend.entity;
 
 import com.emr.ikdemobackend.entity.enums.SpendingType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -43,10 +44,12 @@ public class Spending {
     private String description;
 
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    private LocalDateTime updated_at;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     public Spending(Employee employee, SpendingType spendingType,
                     BigDecimal amount, LocalDate receiptDate, int taxRate, String description) {
