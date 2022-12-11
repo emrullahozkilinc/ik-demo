@@ -1,4 +1,4 @@
-import {Col, Row, Table} from "reactstrap";
+import {Col, Input, Row, Table} from "reactstrap";
 import MyPagination from "../Pagination";
 import React, {useEffect, useState} from "react";
 import '../style/css/tables.css'
@@ -11,6 +11,8 @@ const Shifts = () => {
     const [shifts, setShifts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [shiftsPerPage] = useState(6);
+    const [searchInput, setSearchInput] = useState("");
+    const [sortInput, setSortInput] = useState("")
 
     const {user} = useAuth();
 
@@ -33,15 +35,33 @@ const Shifts = () => {
 
     const indexOfLastShift = currentPage * shiftsPerPage;
     const indexOfFirstShift = indexOfLastShift - shiftsPerPage;
-    const currentShifts = shifts.slice(indexOfFirstShift, indexOfLastShift);
+    let currentShifts = shifts.slice(indexOfFirstShift, indexOfLastShift);
     const totalPages = Math.ceil(shifts.length/shiftsPerPage);
 
+    const searchChange = (e) => {
+        setSearchInput(e.target.value);
+    }
+
+    const sortChange = (e) => {
+        setSortInput(e.target.value);
+    }
+    
     return (
         <div className="general-table">
             <div className="table-wrapper">
                 <div className="table-title">
                     <Row>
-                        <Col md={{size:10}}><h2>Shifts</h2></Col>
+                        <Col><h2>Shifts</h2></Col>
+                        <Col md={{size:3}}><Input type="search" placeholder="Search by National Id" aria-label="Search" onChange={searchChange}/></Col>
+                        <Col md={{size:2}}>
+                            <Input type={"select"} onChange={sortChange}>
+                                <option disabled selected value>Sort By</option>
+                                <option value="employeeNationalId">National Id</option>
+                                <option value="date">Shift Date</option>
+                                <option value="hours">Shift Time (Hours)</option>
+                                <option value="description">Description</option>
+                            </Input>
+                        </Col>
                     </Row>
                 </div>
                 <Table responsive hover size="" className="employee-table2">
@@ -57,7 +77,15 @@ const Shifts = () => {
                     </thead>
                     <tbody>
 
-                    {currentShifts.map((shift, i) => {
+                    {currentShifts
+                        .filter(shift => {
+                            if (searchInput !== "") {
+                                return shift.employeeNationalId == searchInput
+                            }else
+                                return true;
+                        })
+                        .sort((shift1,shift2) => (shift1[sortInput] > shift2[sortInput] ? 1 : -1))
+                        .map((shift, i) => {
                         return (
                             <tr key={i}>
                                 <th scope="row">{indexOfFirstShift+i+1}</th>

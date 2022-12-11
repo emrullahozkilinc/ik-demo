@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Col, Row, Table} from "reactstrap";
+import {Col, Input, Row, Table} from "reactstrap";
 import AddEmployeeModal from "./components/modals/employee/AddEmployeeModal";
 import DayoffModal from "./components/modals/dayoff/DayoffModal";
 import SpendingModal from "./components/modals/spending/SpendingModal";
@@ -16,6 +16,8 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
     const [employees, setEmployees] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [employeesPerPage] = useState(6);
+    const [searchInput, setSearchInput] = useState("");
+    const [sortInput, setSortInput] = useState("")
 
     const {user} = useAuth();
 
@@ -35,16 +37,42 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
 
     const indexOfLastEmployee = currentPage * employeesPerPage;
     const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
-    const currentEmployees = employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
+    let currentEmployees = employees.slice(indexOfFirstEmployee, indexOfLastEmployee);
     const totalPages = Math.ceil(employees.length/employeesPerPage);
+
+    const searchChange = (e) => {
+        setSearchInput(e.target.value);
+    }
+
+    const sortChange = (e) => {
+        setSortInput(e.target.value);
+    }
 
     return (
         <div className="general-table">
             <div className="table-wrapper">
                 <div className="table-title">
                     <Row>
-                        <Col md={{size:10}}><h2>Employees</h2></Col>
-                        <Col>
+                        <Col><h2>Employees</h2></Col>
+                        <Col md={{size:3}}><Input type="search" placeholder="Search by National Id" aria-label="Search" onChange={searchChange}/></Col>
+                        <Col md={{size:2}}>
+                            <Input type={"select"} onChange={sortChange}>
+                                <option disabled selected value>Sort By</option>
+                                <option value="firstName">First Name</option>
+                                <option value="lastName">Last Name</option>
+                                <option value="nationalId">National Id</option>
+                                <option value="position">Position</option>
+                                <option value="startDate">Date of Start</option>
+                                <option value="salary">Salary</option>
+                                <option value="level">Level</option>
+                                <option value="title">Title</option>
+                                <option value="bornDate">Born Date</option>
+                                <option value="department">Department</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone</option>
+                            </Input>
+                        </Col>
+                        <Col md={{size:2}} >
                             <AddEmployeeModal
                                 positions={["backend","frontend"]}
                                 levels={["J1", "J2", "J3"]}
@@ -53,6 +81,7 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
                                 employees={employees}
                             />
                         </Col>
+
                     </Row>
                 </div>
                 <Table responsive hover size="" className="employee-table2">
@@ -80,7 +109,15 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
                     </thead>
                     <tbody>
 
-                    {currentEmployees.map((worker, i) => {
+                    {currentEmployees
+                        .filter(employee => {
+                            if (searchInput !== "") {
+                                return employee.employeeNationalId == searchInput
+                            }else
+                                return true;
+                        })
+                        .sort((employee1,employee2) => (employee1[sortInput] > employee2[sortInput] ? 1 : -1))
+                        .map((worker, i) => {
                         return (
                             <tr key={i}>
                                 <th scope="row">{indexOfFirstEmployee+i+1}</th>

@@ -1,4 +1,4 @@
-import {Col, Row, Table} from "reactstrap";
+import {Col, Input, Row, Table} from "reactstrap";
 import MyPagination from "../Pagination";
 import React, {useEffect, useState} from "react";
 import '../style/css/tables.css'
@@ -11,6 +11,8 @@ const Dayoffs = () => {
     const [dayoffs, setDayoffs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [dayoffsPerPage] = useState(6);
+    const [searchInput, setSearchInput] = useState("");
+    const [sortInput, setSortInput] = useState("")
 
     const {user} = useAuth();
 
@@ -33,15 +35,37 @@ const Dayoffs = () => {
 
     const indexOfLastDayoff = currentPage * dayoffsPerPage;
     const indexOfFirstDayoff = indexOfLastDayoff - dayoffsPerPage;
-    const currentDayoffs = dayoffs.slice(indexOfFirstDayoff, indexOfLastDayoff);
+    let currentDayoffs = dayoffs.slice(indexOfFirstDayoff, indexOfLastDayoff);
     const totalPages = Math.ceil(dayoffs.length/dayoffsPerPage);
+
+    const searchChange = (e) => {
+        setSearchInput(e.target.value);
+    }
+
+    const sortChange = (e) => {
+        setSortInput(e.target.value);
+    }
 
     return (
         <div className="general-table">
             <div className="table-wrapper">
                 <div className="table-title">
                     <Row>
-                        <Col md={{size:10}}><h2>Dayoffs</h2></Col>
+                        <Col ><h2>Dayoffs</h2></Col>
+                        <Col md={{size:3}}><Input type="search" placeholder="Search by National Id" aria-label="Search" onChange={searchChange}/></Col>
+                        <Col md={{size:2}}>
+                                <Input type={"select"} onChange={sortChange}>
+                                    <option disabled selected value>Sort By</option>
+                                    <option value="employeeNationalId">National Id</option>
+                                    <option value="leaveType">Leave Type</option>
+                                    <option value="daysOfLeave">Days Of Leave</option>
+                                    <option value="dateOfStart">Start Date</option>
+                                    <option value="dateOfEnd">End Date</option>
+                                    <option value="description">Description</option>
+                                    <option value="dateOfReturn">Return Date</option>
+                                </Input>
+                        </Col>
+
                     </Row>
                 </div>
                 <Table responsive hover size="" className="employee-table2">
@@ -60,36 +84,44 @@ const Dayoffs = () => {
                     </thead>
                     <tbody>
 
-                    {currentDayoffs.map((dayoff, i) => {
-                        return (
-                            <tr key={i}>
-                                <th scope="row">{indexOfFirstDayoff+i+1}</th>
-                                <td>{dayoff.employeeNationalId}</td>
-                                <td>{dayoff.leaveType}</td>
-                                <td>{dayoff.daysOfLeave}</td>
-                                <td>{new Date(dayoff.dateOfStart).toLocaleDateString()}</td>
-                                <td>{new Date(dayoff.dateOfEnd).toLocaleDateString()}</td>
-                                <td>{dayoff.description}</td>
-                                <td>{new Date(dayoff.dateOfReturn).toLocaleDateString()}</td>
-                                <td>
-                                    <Row>
-                                        <Col>
-                                            <EditDayoffModal
-                                                setDayoffs={setDayoffs}
-                                                dayoff={dayoff}
-                                                dayoffs={dayoffs}/>
-                                        </Col>
-                                        <Col>
-                                            <DeleteDayoffModal
-                                                dayoffId={dayoff.id}
-                                                setDayoffs={setDayoffs}
-                                                dayoffs={dayoffs}
-                                            />
-                                        </Col>
-                                    </Row>
-                                </td>
-                            </tr>
-                        )}
+                    {currentDayoffs
+                        .filter(dayoff => {
+                            if (searchInput !== "") {
+                                return dayoff.employeeNationalId == searchInput
+                            }else
+                                return true;
+                        })
+                        .sort((dayoff1,dayoff2) => (dayoff1[sortInput] > dayoff2[sortInput] ? 1 : -1))
+                        .map((dayoff, i) => {
+                            return (
+                                <tr key={i}>
+                                    <th scope="row">{indexOfFirstDayoff+i+1}</th>
+                                    <td>{dayoff.employeeNationalId}</td>
+                                    <td>{dayoff.leaveType}</td>
+                                    <td>{dayoff.daysOfLeave}</td>
+                                    <td>{new Date(dayoff.dateOfStart).toLocaleDateString()}</td>
+                                    <td>{new Date(dayoff.dateOfEnd).toLocaleDateString()}</td>
+                                    <td>{dayoff.description}</td>
+                                    <td>{new Date(dayoff.dateOfReturn).toLocaleDateString()}</td>
+                                    <td>
+                                        <Row>
+                                            <Col>
+                                                <EditDayoffModal
+                                                    setDayoffs={setDayoffs}
+                                                    dayoff={dayoff}
+                                                    dayoffs={dayoffs}/>
+                                            </Col>
+                                            <Col>
+                                                <DeleteDayoffModal
+                                                    dayoffId={dayoff.id}
+                                                    setDayoffs={setDayoffs}
+                                                    dayoffs={dayoffs}
+                                                />
+                                            </Col>
+                                        </Row>
+                                    </td>
+                                </tr>
+                            )}
                     )}
                     </tbody>
                 </Table>

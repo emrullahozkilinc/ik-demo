@@ -94,7 +94,7 @@ function AddEmployeeModal(props) {
 
     return (
         <div>
-            <Button className="add-button" color="success" onClick={toggle}>Add Employee</Button>
+            <button className="btn btn-primary btn-block add-button" color="success" onClick={toggle} style={{paddingRight:'21%',paddingLeft:'21%'}}>Add Employee</button>
             <Modal isOpen={isOpen} toggle={toggle} centered={true} size={"lg"}>
                 <ModalHeader>Add Employee</ModalHeader>
                 <ModalBody>

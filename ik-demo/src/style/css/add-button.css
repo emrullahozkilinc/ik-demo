@@ -2,4 +2,6 @@ input ::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    padding-right: 40px;
+    padding-left: 40px;
 }
