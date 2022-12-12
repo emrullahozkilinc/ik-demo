@@ -25,12 +25,9 @@ import java.util.Date;
 public class AuthFilter extends UsernamePasswordAuthenticationFilter {
     private final AuthenticationManager authManager;
 
-    @Value("${security.secret}")
-    private String secret;
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-            throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         UserLoginRequestDTO dto = null;
         try {
             dto = new ObjectMapper().readValue(request.getInputStream(),UserLoginRequestDTO.class);
@@ -44,10 +41,9 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult)
-            throws IOException, ServletException {
+    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         User user = (User) authResult.getPrincipal();
-        Algorithm algorithm = Algorithm.HMAC256(secret.getBytes());
+        Algorithm algorithm = Algorithm.HMAC256("BU-SIFREYI-KIMSE-COZEMEZ!".getBytes());
         String token = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + (60 * 60 * 1000 * 24)))
@@ -61,8 +57,7 @@ public class AuthFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed)
-            throws IOException, ServletException {
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         response.getWriter().print("Username or password error.");
         response.getWriter().flush();

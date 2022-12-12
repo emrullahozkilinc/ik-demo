@@ -2,6 +2,7 @@ package com.emr.ikdemobackend.service;
 
 import com.emr.ikdemobackend.dto.request.RequestSpendingDTO;
 import com.emr.ikdemobackend.dto.response.SpendingDTO;
+import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.Spending;
 import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -71,5 +73,11 @@ public class SpendingService {
 
         return spendingById.map(mapper::toSpendingDTO)
                 .orElseThrow(() -> new SpendingNotFoundException("This Spending not found in system."));
+    }
+
+    public Set<HistoriesDTO> toHistoryDTO(){
+        return spendingRepository.findAll()
+                .stream().map(mapper::toHistoryDTO)
+                .collect(Collectors.toSet());
     }
 }

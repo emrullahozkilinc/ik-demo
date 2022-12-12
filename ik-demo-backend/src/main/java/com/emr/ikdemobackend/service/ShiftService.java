@@ -2,6 +2,7 @@ package com.emr.ikdemobackend.service;
 
 import com.emr.ikdemobackend.dto.request.RequestShiftDTO;
 import com.emr.ikdemobackend.dto.response.ShiftDTO;
+import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.Shift;
 import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,5 +69,11 @@ public class ShiftService {
 
         return shiftById.map(mapper::toShiftDTO)
                 .orElseThrow(() -> new ShiftNotFoundException("This Shift not found in system."));
+    }
+
+    public Set<HistoriesDTO> toHistoryDTO(){
+        return shiftRepository.findAll()
+                .stream().map(mapper::toHistoryDTO)
+                .collect(Collectors.toSet());
     }
 }

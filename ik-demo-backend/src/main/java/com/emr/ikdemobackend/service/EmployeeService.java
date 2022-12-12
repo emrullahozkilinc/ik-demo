@@ -2,6 +2,7 @@ package com.emr.ikdemobackend.service;
 
 import com.emr.ikdemobackend.dto.request.RequestEmployeeDTO;
 import com.emr.ikdemobackend.dto.response.EmployeeDTO;
+import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.EmployeeAddress;
 import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -85,5 +87,11 @@ public class EmployeeService {
 
             employeeRepository.save(employee);
         });
+    }
+
+    public Set<HistoriesDTO> toHistoryDTO(){
+        return employeeRepository.findAll()
+                .stream().map(mapper::toHistoryDTO)
+                .collect(Collectors.toSet());
     }
 }
