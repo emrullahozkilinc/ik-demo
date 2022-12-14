@@ -10,6 +10,7 @@ import com.emr.ikdemobackend.mapper.EmployeeMapper;
 import com.emr.ikdemobackend.repository.EmployeeAddressRepository;
 import com.emr.ikdemobackend.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class EmployeeService {
@@ -28,15 +30,17 @@ public class EmployeeService {
 
 
     public List<EmployeeDTO> getAll(){
+        log.info("All Employees listing...");
         return employeeRepository.findAll()
                 .stream().map(mapper::toEmployeeDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public EmployeeDTO getEmployee(Long id){
+        log.info("Employee " + id + " listing...");
         return employeeRepository.findById(id)
                 .map(mapper::toEmployeeDTO)
-                .orElseThrow(() -> new EmployeeNotFoundException("This Employee not found in system."));
+                .orElseThrow(EmployeeNotFoundException::new);
     }
 
     public EmployeeDTO addEmployee(RequestEmployeeDTO requestEmployeeDTO){
@@ -46,6 +50,7 @@ public class EmployeeService {
                 mapper.toEmployeeAddress(mappedEmployee.getAddress())
         );
         employee.setAddress(address);
+        log.info("Employee adding...");
         return mapper.toEmployeeDTO(employeeRepository.save(employee));
     }
 
@@ -53,18 +58,18 @@ public class EmployeeService {
         Optional<Employee> employeeByNatId = employeeRepository.findByNationalId(nationalId);
         Employee mappedEmployee = mapper.toEmployeeFromRequestEmployeeDTO(requestEmployeeDTO);
         setEmployeeAndSave(employeeByNatId, mappedEmployee);
-
+        log.info("Employee updating...");
         return employeeByNatId.map(mapper::toEmployeeDTO)
-                .orElseThrow(() -> new EmployeeNotFoundException("This Employee not found in system."));
+                .orElseThrow(EmployeeNotFoundException::new);
     }
 
     public EmployeeDTO deleteEmployee(Long nationalId){
         Optional<Employee> employeeById = employeeRepository.findByNationalId(nationalId);
 
         employeeById.ifPresent(employeeRepository::delete);
-
+        log.info("Employee deleting...");
         return employeeById.map(mapper::toEmployeeDTO)
-                .orElseThrow(() -> new EmployeeNotFoundException("This Employee not found in system."));
+                .orElseThrow(EmployeeNotFoundException::new);
     }
 
     private void setEmployeeAndSave(Optional<Employee> optionalEmployee, Employee employeeToSave){
@@ -90,6 +95,7 @@ public class EmployeeService {
     }
 
     public Set<HistoriesDTO> toHistoryDTO(){
+        log.info("Getting employees process history...");
         return employeeRepository.findAll()
                 .stream().map(mapper::toHistoryDTO)
                 .collect(Collectors.toSet());

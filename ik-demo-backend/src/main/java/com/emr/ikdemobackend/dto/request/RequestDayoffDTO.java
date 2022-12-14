@@ -1,6 +1,5 @@
 package com.emr.ikdemobackend.dto.request;
 
-import com.emr.ikdemobackend.entity.enums.LeaveType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 import lombok.Getter;
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
 public class RequestDayoffDTO {
 
     private final Long employeeNationalId;
-    private final LeaveType leaveType;
+    private final String leaveType;
     @Min(value = 1, message = "Leave days must be greater than 0")
     @Max(value = 360, message = "Leave days must be smaller than 360.")
     private final int daysOfLeave;
