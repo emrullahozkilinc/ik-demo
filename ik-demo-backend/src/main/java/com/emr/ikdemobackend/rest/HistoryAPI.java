@@ -1,6 +1,6 @@
 package com.emr.ikdemobackend.rest;
 
-import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
+import com.emr.ikdemobackend.dto.response.HistoryDTO;
 import com.emr.ikdemobackend.service.HistoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class HistoryAPI {
     private final HistoryService service;
 
     @GetMapping
-    public Set<HistoriesDTO> getHistories(){
-        return service.getAllHistories();
+    public Set<HistoryDTO> getHistories(){
+        return service.getHistory();
     }
 }

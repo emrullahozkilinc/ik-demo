@@ -2,7 +2,6 @@ package com.emr.ikdemobackend.mapper;
 
 import com.emr.ikdemobackend.dto.request.RequestDayoffDTO;
 import com.emr.ikdemobackend.dto.response.DayoffDTO;
-import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Dayoff;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,7 +16,4 @@ public interface DayoffMapper {
 
     @Mapping(target = "leaveType", expression = "java(LeaveType.getByName(requestDayoffDTO.getLeaveType()))")
     Dayoff toDayoffFromRequestDayoffDTO(RequestDayoffDTO requestDayoffDTO);
-
-    @Mapping(target = "entityName", expression = "java(dayoff.getClass().getSimpleName())")
-    HistoriesDTO toHistoryDTO(Dayoff dayoff);
 }

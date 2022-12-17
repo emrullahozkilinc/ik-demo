@@ -1,6 +1,7 @@
 package com.emr.ikdemobackend.exception.handler;
 
 import com.emr.ikdemobackend.exception.error.FieldValidationError;
+import com.emr.ikdemobackend.exception.exceptions.DateConflictException;
 import com.emr.ikdemobackend.exception.exceptions.NotFoundException;
 import com.emr.ikdemobackend.mapper.FieldValidationErrorMapper;
 import com.emr.ikdemobackend.mapper.MethodArgumentErrorMapper;
@@ -54,6 +55,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> handleEnumErrors() {
         return new ResponseEntity<>("Some inputs wrong!", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DateConflictException.class)
+    public ResponseEntity<String> handleDateConflicts(DateConflictException exception){
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)

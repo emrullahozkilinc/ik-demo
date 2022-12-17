@@ -2,10 +2,8 @@ package com.emr.ikdemobackend.service;
 
 import com.emr.ikdemobackend.dto.request.RequestSpendingDTO;
 import com.emr.ikdemobackend.dto.response.SpendingDTO;
-import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.Spending;
-import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
 import com.emr.ikdemobackend.exception.exceptions.SpendingNotFoundException;
 import com.emr.ikdemobackend.mapper.SpendingMapper;
 import com.emr.ikdemobackend.repository.EmployeeRepository;
@@ -16,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -57,11 +53,7 @@ public class SpendingService {
         Spending mappedSpending = mapper.toSpendingFromRequestSpendingDTO(requestSpendingDTO);
 
         spendingById.ifPresent(spending -> {
-            spending.setDescription(mappedSpending.getDescription());
-            spending.setSpendingType(mappedSpending.getSpendingType());
-            spending.setAmount(mappedSpending.getAmount());
-            spending.setReceiptDate(mappedSpending.getReceiptDate());
-            spending.setTaxRate(mappedSpending.getTaxRate());
+            setSpending(spending, mappedSpending);
             spendingRepository.save(spending);
         });
         log.info("Spending updating...");
@@ -79,10 +71,11 @@ public class SpendingService {
                 .orElseThrow(SpendingNotFoundException::new);
     }
 
-    public Set<HistoriesDTO> toHistoryDTO(){
-        log.info("Spending history getting.");
-        return spendingRepository.findAll()
-                .stream().map(mapper::toHistoryDTO)
-                .collect(Collectors.toSet());
+    private void setSpending(Spending spending, Spending mappedSpending){
+        spending.setDescription(mappedSpending.getDescription());
+        spending.setSpendingType(mappedSpending.getSpendingType());
+        spending.setAmount(mappedSpending.getAmount());
+        spending.setReceiptDate(mappedSpending.getReceiptDate());
+        spending.setTaxRate(mappedSpending.getTaxRate());
     }
 }

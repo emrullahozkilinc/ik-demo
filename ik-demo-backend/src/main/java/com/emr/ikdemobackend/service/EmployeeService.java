@@ -2,7 +2,6 @@ package com.emr.ikdemobackend.service;
 
 import com.emr.ikdemobackend.dto.request.RequestEmployeeDTO;
 import com.emr.ikdemobackend.dto.response.EmployeeDTO;
-import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.EmployeeAddress;
 import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
@@ -94,10 +93,4 @@ public class EmployeeService {
         });
     }
 
-    public Set<HistoriesDTO> toHistoryDTO(){
-        log.info("Getting employees process history...");
-        return employeeRepository.findAll()
-                .stream().map(mapper::toHistoryDTO)
-                .collect(Collectors.toSet());
-    }
 }

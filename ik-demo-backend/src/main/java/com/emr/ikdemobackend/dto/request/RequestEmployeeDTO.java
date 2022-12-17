@@ -33,6 +33,7 @@ public class RequestEmployeeDTO {
     @DecimalMax(value = "300000.0", message = "Salary cannot be greater than 300.000 TL.")
     @NotNull(message = "Salary cannot be empty.")
     private final BigDecimal salary;
+    @NotNull(message = "Levels cannot be empty.")
     private final Levels level;
     @NotBlank(message = "Title cannot be empty.")
     private final String title;

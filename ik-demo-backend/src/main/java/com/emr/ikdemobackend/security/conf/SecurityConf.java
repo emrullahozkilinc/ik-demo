@@ -37,7 +37,7 @@ public class SecurityConf {
         http.addFilterBefore(new JWTFilter(), UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(new CorsFilter(), SessionManagementFilter.class);
         http.csrf().disable();
-        http.cors().disable();
+        http.cors();
 
         http.authorizeHttpRequests().requestMatchers("/login").permitAll();
         http.authorizeHttpRequests().requestMatchers("/api/v1/auth/**").hasAuthority("ROLE_ADMIN");
@@ -54,13 +54,13 @@ public class SecurityConf {
                 .and().build();
     }
 
-    @Bean
-    CorsConfigurationSource configureCors(){
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/v1/app/**", configuration);
-        return source;
-    }
+//    @Bean
+//    CorsConfigurationSource configureCors(){
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+//        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/api/v1/app/**", configuration);
+//        return source;
+//    }
 }

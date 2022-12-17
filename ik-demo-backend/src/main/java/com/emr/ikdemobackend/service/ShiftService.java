@@ -2,9 +2,9 @@ package com.emr.ikdemobackend.service;
 
 import com.emr.ikdemobackend.dto.request.RequestShiftDTO;
 import com.emr.ikdemobackend.dto.response.ShiftDTO;
-import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Employee;
 import com.emr.ikdemobackend.entity.Shift;
+import com.emr.ikdemobackend.exception.exceptions.DateConflictException;
 import com.emr.ikdemobackend.exception.exceptions.EmployeeNotFoundException;
 import com.emr.ikdemobackend.exception.exceptions.ShiftNotFoundException;
 import com.emr.ikdemobackend.mapper.ShiftMapper;
@@ -14,9 +14,11 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -46,6 +48,10 @@ public class ShiftService {
         Employee employee = employeeRepository
                 .findByNationalId(requestShiftDTO.getEmployeeNationalId())
                 .orElseThrow(()->new EmployeeNotFoundException("This employee not found in system."));
+
+        if (isDatesConflicts(employee, requestShiftDTO.getDate()))
+            throw new DateConflictException();
+
         Shift shift = mapper.toShiftFromRequestShiftDTO(requestShiftDTO);
         shift.setEmployee(employee);
         log.info("Shift adding...");
@@ -57,9 +63,7 @@ public class ShiftService {
         Shift mappedShift = mapper.toShiftFromRequestShiftDTO(requestShiftDTO);
         log.info("Shift updating...");
         shiftById.ifPresent(shift -> {
-            shift.setDescription(mappedShift.getDescription());
-            shift.setDate(mappedShift.getDate());
-            shift.setHours(mappedShift.getHours());
+            setShift(shift, mappedShift);
             shiftRepository.save(shift);
         });
 
@@ -76,10 +80,22 @@ public class ShiftService {
                 .orElseThrow(ShiftNotFoundException::new);
     }
 
-    public Set<HistoriesDTO> toHistoryDTO(){
-        log.info("Getting shifts process history...");
-        return shiftRepository.findAll()
-                .stream().map(mapper::toHistoryDTO)
-                .collect(Collectors.toSet());
+    private boolean isDatesConflicts(Employee employee, LocalDateTime date){
+        List<Shift> shifts = shiftRepository.findByEmployee(employee);
+
+        if (!shifts.isEmpty())
+            return shifts.stream().anyMatch(isGivenDateBetweenEmployeeDate(date));
+        else
+            return false;
+    }
+
+    private Predicate<Shift> isGivenDateBetweenEmployeeDate(LocalDateTime date){
+        return shift -> (date.isAfter(shift.getDate()) && date.isBefore(shift.getDate()));
+    }
+
+    private void setShift(Shift shift, Shift mappedShift){
+        shift.setDescription(mappedShift.getDescription());
+        shift.setDate(mappedShift.getDate());
+        shift.setHours(mappedShift.getHours());
     }
 }

@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class RequestSpendingDTO {
     private final Long employeeNationalId;
+    @NotNull(message = "Spending type cannot be empty.")
     private final SpendingType spendingType;
     @DecimalMin(value = "0.0", inclusive = false, message = "Amount cannot be zero or negative.")
     @DecimalMax(value = "100000.0", message = "Amount cannot be greater than 100.000 TL.")

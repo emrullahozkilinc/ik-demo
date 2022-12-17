@@ -2,7 +2,6 @@ package com.emr.ikdemobackend.mapper;
 
 import com.emr.ikdemobackend.dto.request.RequestSpendingDTO;
 import com.emr.ikdemobackend.dto.response.SpendingDTO;
-import com.emr.ikdemobackend.dto.response.history.HistoriesDTO;
 import com.emr.ikdemobackend.entity.Spending;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -13,6 +12,5 @@ public interface SpendingMapper {
     @Mapping(target = "employeeNationalId", source = "employee.nationalId")
     SpendingDTO toSpendingDTO(Spending spending);
     Spending toSpendingFromRequestSpendingDTO(RequestSpendingDTO requestSpendingDTO);
-    @Mapping(target = "entityName", expression = "java(spending.getClass().getSimpleName())")
-    HistoriesDTO toHistoryDTO(Spending spending);
+
 }

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class RequestDayoffDTO {
 
     private final Long employeeNationalId;
+    @NotBlank(message = "Leave Type cannot be empty.")
     private final String leaveType;
     @Min(value = 1, message = "Leave days must be greater than 0")
     @Max(value = 360, message = "Leave days must be smaller than 360.")
