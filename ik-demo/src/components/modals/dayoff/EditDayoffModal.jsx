@@ -52,6 +52,18 @@ function EditDayoffModal(props) {
                 }).then(r => {
                     setErrors([]);
                     setIsOpen(!isOpen);
+                    axios.get("http://localhost:8080/api/v1/app/dayoffs",
+                        {
+                            headers: {
+                                'Authorization': "Bearer " + user.token
+                            }
+                        })
+                        .then(res => {
+                            props.setDayoffs(res.data)
+                        })
+                        .catch(e => {
+                            console.log(e)
+                        })
                 }).catch(e => {
                     setErrors(e.response.data);
                 })

@@ -69,6 +69,18 @@ function EditEmployeeModal(props) {
                 .then(r => {
                     setErrors([]);
                     setIsOpen(!isOpen);
+                    axios.get("http://localhost:8080/api/v1/app/employees",
+                        {
+                            headers: {
+                                'Authorization': "Bearer " + user.token
+                            }
+                        })
+                        .then(res => {
+                            props.setWorkers(res.data)
+                        })
+                        .catch(e => {
+                            console.log(e)
+                        })
                 })
                 .catch(e => {
                     setErrors(e.response.data);

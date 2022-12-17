@@ -24,14 +24,12 @@ const Shifts = () => {
                 }
             })
             .then(r => {
-                if (JSON.stringify(shifts) !== JSON.stringify(r.data)){
-                    setShifts(r.data)
-                }
+                setShifts(r.data)
             })
             .catch(e => {
                 console.log(e)
             })
-    }, [shifts])
+    }, [])
 
     const indexOfLastShift = currentPage * shiftsPerPage;
     const indexOfFirstShift = indexOfLastShift - shiftsPerPage;
@@ -80,7 +78,7 @@ const Shifts = () => {
                     {currentShifts
                         .filter(shift => {
                             if (searchInput !== "") {
-                                return shift.employeeNationalId == searchInput
+                                return (shift.employeeNationalId + '').includes(searchInput);
                             }else
                                 return true;
                         })

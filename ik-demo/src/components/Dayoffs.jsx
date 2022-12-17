@@ -24,14 +24,12 @@ const Dayoffs = () => {
                 }
             })
             .then(r => {
-                if (JSON.stringify(dayoffs) !== JSON.stringify(r.data)){
-                    setDayoffs(r.data)
-                }
+                setDayoffs(r.data)
             })
             .catch(e => {
                 console.log(e)
             })
-    }, [dayoffs])
+    }, [])
 
     const indexOfLastDayoff = currentPage * dayoffsPerPage;
     const indexOfFirstDayoff = indexOfLastDayoff - dayoffsPerPage;
@@ -87,7 +85,7 @@ const Dayoffs = () => {
                     {currentDayoffs
                         .filter(dayoff => {
                             if (searchInput !== "") {
-                                return dayoff.employeeNationalId == searchInput
+                                return (dayoff.employeeNationalId + '').includes(searchInput);
                             }else
                                 return true;
                         })

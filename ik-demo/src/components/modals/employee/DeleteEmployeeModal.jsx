@@ -19,7 +19,18 @@ function DeleteEmployeeModal(props) {
                     }
                 })
                 .then(r => {
-                    // props.setWorkers([...props.workers, r.data])
+                    axios.get("http://localhost:8080/api/v1/app/employees",
+                        {
+                            headers: {
+                                'Authorization': "Bearer " + user.token
+                            }
+                        })
+                        .then(res => {
+                            props.setWorkers(res.data)
+                        })
+                        .catch(e => {
+                            console.log(e)
+                        })
                 })
                 .catch(e => {
                     console.log(e)

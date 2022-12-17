@@ -12,7 +12,7 @@ import './style/css/tables.css'
 import {useAuth} from "./components/auth/AuthContext";
 import axios from "axios";
 
-const EmployeeList = ({allEmployees, employeeContacts}) => {
+const EmployeeList = () => {
     const [employees, setEmployees] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [employeesPerPage] = useState(6);
@@ -29,11 +29,9 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
                 }
             })
             .then(r => {
-                if (JSON.stringify(employees)!==JSON.stringify(r.data)) {
-                    setEmployees(r.data)
-                }
+                setEmployees(r.data)
             })
-    },[employees])
+    },[])
 
     const indexOfLastEmployee = currentPage * employeesPerPage;
     const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
@@ -112,7 +110,7 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
                     {currentEmployees
                         .filter(employee => {
                             if (searchInput !== "") {
-                                return employee.employeeNationalId == searchInput
+                                return (employee.nationalId + '').includes(searchInput);
                             }else
                                 return true;
                         })
@@ -145,6 +143,7 @@ const EmployeeList = ({allEmployees, employeeContacts}) => {
                                                 levels={["J1", "J2", "J3"]}
                                                 departments={["Finance", "Human Resources", "Development"]}
                                                 worker={worker}
+                                                setWorkers={setEmployees}
                                             />
                                         </Col>
                                         <Col>

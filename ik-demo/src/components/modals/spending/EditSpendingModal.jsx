@@ -51,9 +51,20 @@ function EditSpendingModal(props) {
                     }
                 })
                 .then(r => {
-                    console.log(r)
                     setErrors([]);
                     setIsOpen(!isOpen);
+                    axios.get("http://localhost:8080/api/v1/app/spendings",
+                        {
+                            headers: {
+                                'Authorization': "Bearer " + user.token
+                            }
+                        })
+                        .then(res => {
+                            props.setSpendings(res.data)
+                        })
+                        .catch(e => {
+                            console.log(e)
+                        })
                 })
                 .catch(e => {
                     console.log(e);

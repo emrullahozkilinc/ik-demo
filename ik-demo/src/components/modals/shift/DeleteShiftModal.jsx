@@ -20,7 +20,18 @@ function DeleteShiftModal(props) {
                     }
                 })
                 .then(r => {
-                    // props.setDayoffs([...props.dayoffs, r.data])
+                    axios.get("http://localhost:8080/api/v1/app/shifts",
+                        {
+                            headers: {
+                                'Authorization': "Bearer " + user.token
+                            }
+                        })
+                        .then(res => {
+                            props.setShifts(res.data)
+                        })
+                        .catch(e => {
+                            console.log(e)
+                        })
                 })
                 .catch(e => {
                     console.log(e)

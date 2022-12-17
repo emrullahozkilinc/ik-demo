@@ -24,14 +24,12 @@ const Spendings = () => {
                 }
             })
             .then(r => {
-                if (JSON.stringify(spendings) !== JSON.stringify(r.data)){
-                    setSpendings(r.data)
-                }
+                setSpendings(r.data)
             })
             .catch(e => {
                 console.log(e)
             })
-    }, [spendings])
+    }, [])
 
     const indexOfLastSpending = currentPage * spendingsPerPage;
     const indexOfFirstSpending = indexOfLastSpending - spendingsPerPage;
@@ -83,7 +81,7 @@ const Spendings = () => {
                     {currentSpendings
                         .filter(spending => {
                             if (searchInput !== "") {
-                                return spending.employeeNationalId == searchInput
+                                return (spending.employeeNationalId + '').includes(searchInput);
                             }else
                                 return true;
                         })
