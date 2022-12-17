@@ -8,10 +8,6 @@
 - Username: myhr
 - Password: 159
 
-### Deploy Edilmiş Proje URL (AWS):
-
-- [Proje](http://ik7-env.eba-r9g3qdgr.us-east-1.elasticbeanstalk.com)
-
 ### Veritabanları:
 
 #### - AUTH-DB
