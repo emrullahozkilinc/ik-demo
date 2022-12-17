@@ -3,7 +3,6 @@ package com.emr.ikdemobackend.entity;
 import com.emr.ikdemobackend.entity.enums.LeaveType;
 import com.emr.ikdemobackend.validator.DayoffValid;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

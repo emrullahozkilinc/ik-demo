@@ -2,7 +2,6 @@ package com.emr.ikdemobackend.entity;
 
 import com.emr.ikdemobackend.entity.enums.SpendingType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
